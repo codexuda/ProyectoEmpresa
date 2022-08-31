@@ -27,7 +27,7 @@ public class tbEnterprise  {
     private Date updatedate;
 
     //Constructor
-    public Enterprise(long ident, String nameenterprise, String address, long phone, Date createdate, Date updatedate) {
+    public tbEnterprise(long ident, String nameenterprise, String address, long phone, Date createdate, Date updatedate) {
         this.ident = ident;
         this.nameenterprise = nameenterprise;
         this.address = address;
