@@ -3,15 +3,15 @@ package empresa.proyectoempresa;
 import javax.persistence.*;
 @Entity
 public class Employee {
-<<<<<<< HEAD
-    @Column(name="createdate", nullable=true, length=undefined)
+
+    @Column(name="createdate", nullable=true)
     private String createdate;
     private long idemp;
-    @Column(name="updatedate", nullable=true, length=undefined)
+    @Column(name="updatedate", nullable=true)
     private String updatedate;
     @Column(name="email", nullable=true, length=100)
     private String email;
-=======
+
 
     //Atributos
     private String nombre, rol, correo;
@@ -64,7 +64,7 @@ public class Employee {
     public void setId(int id) {
         this.idEmpleado = id;
     }
->>>>>>> 1bba0d65b9628dd60daf101efea208d3449c6e86
+
     
     public Employee() {}
 

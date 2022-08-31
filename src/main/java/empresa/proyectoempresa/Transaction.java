@@ -7,29 +7,29 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="tbtransaction")
-public class transaction {
+public class Transaction {
     @Column(name="updatedate", nullable=true)
     private Date updatedate;
-    @Column(name="amount", nullable=true, length=undefined)
+    @Column(name="amount", nullable=true)
     private String amount;
     
-    @id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idtran")
     private Long idtran;
     
    
-    @Column(name="cratedate", nullable=true, length=undefined)
+    @Column(name="cratedate", nullable=true)
     private String cratedate;
     @Column(name="concept", nullable=true, length=100)
     private String concept;
     
-    public transaction() {}
+    public Transaction() {}
 
-    public String getUpdatedate() {
+    public Date getUpdatedate() {
         return updatedate;
     }
-    public void setUpdatedate(String updatedate) {
+    public void setUpdatedate(Date updatedate) {
         this.updatedate = updatedate;
     }
 

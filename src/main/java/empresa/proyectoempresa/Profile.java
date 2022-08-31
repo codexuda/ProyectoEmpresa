@@ -6,9 +6,9 @@ public class Profile {
     @Id
     private long idprof;
     private long phone;
-    @Column(name="createdate", nullable=true, length=undefined)
+    @Column(name="createdate", nullable=true)
     private String createdate;
-    @Column(name="updatedate", nullable=true, length=undefined)
+    @Column(name="updatedate", nullable=true)
     private String updatedate;
     @Column(name="image", nullable=true, length=100)
     private String image;
