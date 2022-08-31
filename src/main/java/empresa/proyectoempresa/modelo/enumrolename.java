@@ -3,8 +3,13 @@ package empresa.proyectoempresa.modelo;
 import javax.persistence.*;
 @Entity
 public class enumrolename  {
+    
+ 
     @Id
-    private long idrole;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idrole")
+    private Long idrole;
+
     @Column(name="roles",  length=100)
     private String roles;
     
