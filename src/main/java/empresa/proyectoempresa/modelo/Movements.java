@@ -1,4 +1,4 @@
-package empresa.proyectoempresa;
+package empresa.proyectoempresa.modelo;
 
 public class Movements {
     
