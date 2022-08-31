@@ -2,19 +2,28 @@ package empresa.proyectoempresa;
 
 import javax.persistence.*;
 @Entity
-public class Enterprise  {
+public class Profile {
+    @Id
+    private long idprof;
     private long phone;
     @Column(name="createdate", nullable=true, length=undefined)
     private String createdate;
     @Column(name="updatedate", nullable=true, length=undefined)
     private String updatedate;
-    private long ident;
-    @Column(name="nameenterprise",  length=100)
-    private String nameenterprise;
-    @Column(name="address", nullable=true, length=150)
-    private String address;
+    @Column(name="image", nullable=true, length=100)
+    private String image;
+    @Column(name="userp", nullable=true, length=100)
+    private String userp;
     
-    public Enterprise () {}
+    public Profile() {}
+
+    public long getIdprof() {
+        return idprof;
+    }
+    public void setIdprof(long idprof) {
+        this.idprof = idprof;
+    }
+
 
     public long getPhone() {
         return phone;
@@ -40,27 +49,19 @@ public class Enterprise  {
     }
 
 
-    public long getIdent() {
-        return ident;
+    public String getImage() {
+        return image;
     }
-    public void setIdent(long ident) {
-        this.ident = ident;
-    }
-
-
-    public String getNameenterprise() {
-        return nameenterprise;
-    }
-    public void setNameenterprise(String nameenterprise) {
-        this.nameenterprise = nameenterprise;
+    public void setImage(String image) {
+        this.image = image;
     }
 
 
-    public String getAddress() {
-        return address;
+    public String getUserp() {
+        return userp;
     }
-    public void setAddress(String address) {
-        this.address = address;
+    public void setUserp(String userp) {
+        this.userp = userp;
     }
 
 
