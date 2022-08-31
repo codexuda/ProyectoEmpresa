@@ -14,8 +14,9 @@ public class tbTransactionController {
     @Autowired
     private tbTransactionRepository repositiorio;
 
-public List<tbTransaction> listarTransaccion (){
-    return repositiorio.findAll();
+    @RequestMapping(value ="/consultartransaccion")
+    public List<tbTransaction> listarTransaccion (){
+        return repositiorio.findAll();
     
 }
 
