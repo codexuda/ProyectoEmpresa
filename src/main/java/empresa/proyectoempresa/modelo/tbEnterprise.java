@@ -5,7 +5,7 @@ import java.sql.Date;
 
 import javax.persistence.*;
 @Entity
-public class Enterprise  {
+public class tbEnterprise  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
