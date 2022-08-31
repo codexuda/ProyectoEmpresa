@@ -1,5 +1,5 @@
 package empresa.proyectoempresa.services;
 
-public class hereServices {
+public class tbTransactionService {
     
 }
