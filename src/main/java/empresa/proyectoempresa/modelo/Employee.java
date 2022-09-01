@@ -15,6 +15,7 @@ public class Employee {
     private long idprof;
     private long idrole;
     private long ident;
+    
     @Column(name="updatedate", nullable=true)
     private Date updatedate;
     @Column(name="createdate", nullable = true)
