@@ -1,69 +1,63 @@
 package empresa.proyectoempresa.modelo;
 
-
 import java.sql.Date;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name="tbtransaction")
+@Table(name="tbTransaction")
 public class Transaction {
-    @Column(name="updatedate", nullable=true)
-    private Date updatedate;
-    @Column(name="amount", nullable=true)
-    private String amount;
-    
+
+    //Atributos
+
+    //Primary Key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idtran")
-    private Long idtran;
-    
-   
-    @Column(name="cratedate", nullable=true)
-    private String cratedate;
-    @Column(name="concept", nullable=true, length=100)
+    @Column(name = "idTran")
+    private Long idTran;
+
+ 
+    @Column(name = "concept", nullable = true, length = 100)
     private String concept;
+
+    @Column(name="amount", nullable=true)
+    private Double amount;
+
+    //Foreing Key
+    @ManyToOne
+    @JoinColumn(name="idEmp", referencedColumnName = "idEmp" )
+    private Double idEmp;
+    //Foreing Key
+    @ManyToOne
+    @JoinColumn(name="idEnt", referencedColumnName = "idEnt" )
+    private Double idEnt;
+
     
+    @Column(name="createdAt", nullable=true)
+    private String createdAt;
+
+
+    @Column(name="updatedAt", nullable=true)
+    private Date updatedAt;
+  
+     
+  
+    
+     //Cosntructor
+
+    public Transaction(Long idTran, String concept, Double amount, Double idEmp, Double idEnt, String createdAt,
+            Date updatedAt) {
+        this.idTran = idTran;
+        this.concept = concept;
+        this.amount = amount;
+        this.idEmp = idEmp;
+        this.idEnt = idEnt;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     public Transaction() {}
 
-    public Date getUpdatedate() {
-        return updatedate;
-    }
-    public void setUpdatedate(Date updatedate) {
-        this.updatedate = updatedate;
-    }
-
-
-    public String getAmount() {
-        return amount;
-    }
-    public void setAmount(String amount) {
-        this.amount = amount;
-    }
-
-
-    public long getIdtran() {
-        return idtran;
-    }
-    public void setIdtran(long idtran) {
-        this.idtran = idtran;
-    }
-
-
-    public String getCratedate() {
-        return cratedate;
-    }
-    public void setCratedate(String cratedate) {
-        this.cratedate = cratedate;
-    }
-
-
-    public String getConcept() {
-        return concept;
-    }
-    public void setConcept(String concept) {
-        this.concept = concept;
-    }
+    
 
 
 }

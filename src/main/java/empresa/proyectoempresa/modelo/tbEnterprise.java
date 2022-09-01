@@ -5,7 +5,7 @@ import java.sql.Date;
 
 import javax.persistence.*;
 @Entity
-public class Enterprise  {
+public class tbEnterprise  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +27,7 @@ public class Enterprise  {
     private Date updatedate;
 
     //Constructor
-    public Enterprise(long ident, String nameenterprise, String address, long phone, Date createdate, Date updatedate) {
+    public tbEnterprise(long ident, String nameenterprise, String address, long phone, Date createdate, Date updatedate) {
         this.ident = ident;
         this.nameenterprise = nameenterprise;
         this.address = address;
