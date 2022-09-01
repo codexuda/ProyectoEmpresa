@@ -21,8 +21,16 @@ public class Employee {
     @Column(name="createdate", nullable = true)
     private Date createdate;
  
-    
-    public Employee() {}
+    public Employee(Long idemp, String email, long idprof, long idrole, long ident, Date updatedate, Date createdate) {
+        this.idemp = idemp;
+        this.email = email;
+        this.idprof = idprof;
+        this.idrole = idrole;
+        this.ident = ident;
+        this.updatedate = updatedate;
+        this.createdate = createdate;
+    }
+
 
     public long getIdemp() {
         return idemp;

@@ -13,7 +13,11 @@ public class enumrolename  {
     @Column(name="roles",  length=100)
     private String roles;
     
-    public enumrolename() {}
+    public enumrolename(Long idrole, String roles) {
+        this.idrole = idrole;
+        this.roles = roles;
+    }
+
 
     public long getIdrole() {
         return idrole;
