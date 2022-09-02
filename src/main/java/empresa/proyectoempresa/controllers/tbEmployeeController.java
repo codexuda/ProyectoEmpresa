@@ -1,5 +1,5 @@
 package empresa.proyectoempresa.controllers;
 
-public class cnEmployee {
+public class tbEmployeeController {
     
 }
