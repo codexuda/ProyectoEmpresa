@@ -10,7 +10,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idemp")
     private Long idemp;
-    @Column(name="email", length=100)
+    @Column(name="email", length=100, unique = true)
     private String email;
     private long idprof;
     private long idrole;
