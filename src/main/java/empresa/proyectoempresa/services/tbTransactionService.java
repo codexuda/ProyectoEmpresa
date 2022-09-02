@@ -8,8 +8,7 @@ import empresa.proyectoempresa.repositories.tbTransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
+//trabajandole
 
 @Service
 public class tbTransactionService {
