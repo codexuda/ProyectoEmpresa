@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import empresa.proyectoempresa.repositories.tbEmployeeRepository;
+import empresa.proyectoempresa.repositories.tbenumrolenameRepository;
 import empresa.proyectoempresa.modelo.*;
 
 @RestController
-@RequestMapping("/employee")
-public class tbEmployeeController {
+@RequestMapping("/role")
+public class tbenumrolenameController {
 
     @Autowired
-    private tbEmployeeRepository repository;
+    private tbenumrolenameRepository repository;
 
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
-    public List<tbEmployee> listar() {
+    public List<tbenumrolename> listar() {
         return repository.findAll();
     }
 
