@@ -27,7 +27,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+	<!-- dependecies para no tener que recargar el proyecto para ver los cambios -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools></artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
 	<!-- dependecies for data bases -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
