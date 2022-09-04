@@ -2,12 +2,15 @@ package empresa.proyectoempresa.modelo;
 
 import javax.persistence.*;
 
+import org.hibernate.type.TrueFalseType;
+import org.apache.tomcat.util.buf.UDecoder;
+
 
 @Entity
 @Table(name="profile")
 public class Profile {
     @Id
-     private long idprof;
+    private long idprof;
     private long phone;
     @Column(name = "createdate", nullable = true)
     private String createdate;
