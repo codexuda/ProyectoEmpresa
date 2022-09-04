@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import empresa.proyectoempresa.modelo.tbProfile;
 
-public class tbProfileRepository {
+@Repository
+public interface tbProfileRepository extends JpaRepository <tbProfile,Long>{
     
 }
