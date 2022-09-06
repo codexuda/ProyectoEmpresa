@@ -10,7 +10,7 @@ public class tbEmployee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idemp")
-    private long idemp;
+    private Long idemp;
     
     @Column(name = "email", length = 100, unique = true)
     private String email;
@@ -18,11 +18,11 @@ public class tbEmployee {
     
     @ManyToOne
     @JoinColumn(name = "idprof", referencedColumnName = "idprof" )
-    private tbProfile profile;
+    private long profile;
     
     @ManyToOne
     @JoinColumn(name ="idrole", referencedColumnName = "idrole")
-    private tbenumrolename Enumrolename;
+    private long Enumrolename;
 
     @ManyToOne
     @JoinColumn(name = "ident", referencedColumnName = "ident")
@@ -30,6 +30,7 @@ public class tbEmployee {
 
     @Column(name = "updatedate", nullable = true)
     private Date updatedate;
+
     @Column(name = "createdate", nullable = true)
     private Date createdate;
 
@@ -59,7 +60,7 @@ public class tbEmployee {
         this.email = email;
     }
 
-    public tbProfile getProfile() {
+    public long getProfile() {
         return profile;
     }
 
@@ -67,7 +68,7 @@ public class tbEmployee {
         this.profile = profile;
     }
 
-    public tbenumrolename getenumrolename() {
+    public long getenumrolename() {
         return Enumrolename;
     }
 
@@ -75,12 +76,12 @@ public class tbEmployee {
         this.Enumrolename = Enumrolename;
     }
 
-    public tbEnterprise gettbEnterprise() {
-        return tbenterprise;
+    public long gettbEnterprise() {
+        return enterprise;
     }
 
     public void setIdent(tbEnterprise tbenterprise) {
-        this.tbenterprise = tbenterprise;
+        this.enterprise = enterprise;
     }
 
     public Date getUpdatedate() {

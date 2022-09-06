@@ -2,10 +2,6 @@ package empresa.proyectoempresa.modelo;
 
 import javax.persistence.*;
 
-import org.hibernate.type.TrueFalseType;
-import org.apache.tomcat.util.buf.UDecoder;
-
-
 @Entity
 @Table(name="profile")
 public class tbProfile {
