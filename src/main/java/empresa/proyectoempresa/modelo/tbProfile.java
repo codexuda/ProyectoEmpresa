@@ -8,7 +8,7 @@ import org.apache.tomcat.util.buf.UDecoder;
 
 @Entity
 @Table(name="profile")
-public class Profile {
+public class tbProfile {
     @Id
     private long idprof;
     private long phone;
@@ -21,7 +21,7 @@ public class Profile {
     @Column(name = "userp", nullable = true, length = 100)
     private String userp;
 
-    public Profile(long idprof, long phone, String createdate, String updatedate, String image, String userp) {
+    public tbProfile(long idprof, long phone, String createdate, String updatedate, String image, String userp) {
         this.idprof = idprof;
         this.phone = phone;
         this.createdate = createdate;

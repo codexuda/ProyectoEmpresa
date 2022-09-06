@@ -18,7 +18,7 @@ public class tbEmployee {
     
     @ManyToOne
     @JoinColumn(name = "idprof", referencedColumnName = "idprof" )
-    private Profile profile;
+    private tbProfile profile;
     
     @ManyToOne
     @JoinColumn(name ="idrole", referencedColumnName = "idrole")
@@ -26,7 +26,7 @@ public class tbEmployee {
 
     @ManyToOne
     @JoinColumn(name = "ident", referencedColumnName = "ident")
-    private tbEnterprise tbenterprise;
+    private tbEnterprise enterprise;
 
     @Column(name = "updatedate", nullable = true)
     private Date updatedate;
@@ -36,9 +36,9 @@ public class tbEmployee {
     public tbEmployee(Long idemp, String email, long idprof, long idrole, long ident, Date updatedate, Date createdate) {
         this.idemp = idemp;
         this.email = email;
-        this.idprof = idprof;
-        this.idrole = idrole;
-        this.ident = ident;
+        this.profile = idprof;
+        this.Enumrolename = idrole;
+        this.enterprise = ident;
         this.updatedate = updatedate;
         this.createdate = createdate;
     }
@@ -59,11 +59,11 @@ public class tbEmployee {
         this.email = email;
     }
 
-    public Profile getProfile() {
+    public tbProfile getProfile() {
         return profile;
     }
 
-    public void setIdprof(Profile profile) {
+    public void setIdprof(tbProfile profile) {
         this.profile = profile;
     }
 
