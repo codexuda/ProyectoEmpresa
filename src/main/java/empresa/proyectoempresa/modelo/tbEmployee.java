@@ -10,7 +10,7 @@ public class tbEmployee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idemp")
-    private Long idemp;
+    private long idemp;
     
     @Column(name = "email", length = 100, unique = true)
     private String email;
