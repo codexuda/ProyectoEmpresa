@@ -30,6 +30,13 @@ public class tbTransactionController {
      public tbTransaction create(tbTransaction tbtransaction){  
         return repositiorio.save(tbtransaction) ;
     }
+    //Eliminar----delete
+    @RequestMapping(value = "/delete/{ident}", method = RequestMethod.DELETE)
+    public String eliminar(@PathVariable long idTran){
+        tbTransaction tbtransaction=repositiorio.findById(idTran).get();
+        repositiorio.delete(tbtransaction);
+        return "Eliminada con exito";
+    }
 
 
     
