@@ -21,14 +21,14 @@ public class tbTransactionController {
     }
     //Consultar un transaccion por ID---"PATCH"
     @RequestMapping(value = "/buscartransaccion/{idTran}", method = RequestMethod.GET)
-    public tbTransaction buscartransaccion(@pathVariable long idTran) {
-        return repositories.findById(idTran).get();
+    public tbTransaction buscartransaccion(@PathVariable long idTran) {
+        return repositiorio.findById(idTran).get();
     }
 
     //Agregar transaccion-----POST
     @RequestMapping (value = "/add",method = RequestMethod.POST)
      public tbTransaction create(tbTransaction tbtransaction){  
-        return repositories.save(tbtransaction) ;
+        return repositiorio.save(tbtransaction) ;
     }
 
 
