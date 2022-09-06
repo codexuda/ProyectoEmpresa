@@ -26,12 +26,6 @@ public class tbEmployeeController {
         return repository.findById(idemp).get();
     }
 
-    // metodo listar un elemento por correo
-    @RequestMapping(value = "/buscar/{email}", method = RequestMethod.GET)
-    public tbEmployee buscar(@PathVariable long email) {
-        return repository.fin(email);
-    }
-
     // metodo crear un registro
     @RequestMapping(value = "/agregar", method = RequestMethod.POST)
     public tbEmployee crear(@RequestBody tbEmployee employee) {
