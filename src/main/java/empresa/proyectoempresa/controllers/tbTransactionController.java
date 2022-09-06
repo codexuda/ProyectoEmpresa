@@ -25,12 +25,17 @@ public class tbTransactionController {
         return repositiorio.findById(idTran).get();
     }
 
+     //Actulización parcial -- PATCH
+     @RequestMapping(value = "/update/{idTran}", method =  RequestMethod.PATCH)
+     public tbTransaction actualizar(@RequestBody tbTransaction tbtransaction){
+     return repositiorio.save(tbtransaction);
+     }
     //Agregar transaccion-----POST
     @RequestMapping (value = "/add",method = RequestMethod.POST)
      public tbTransaction create(tbTransaction tbtransaction){  
         return repositiorio.save(tbtransaction) ;
     }
-    //Eliminar----delete
+    //Eliminar transaccion----delete
     @RequestMapping(value = "/delete/{ident}", method = RequestMethod.DELETE)
     public String eliminar(@PathVariable long idTran){
         tbTransaction tbtransaction=repositiorio.findById(idTran).get();
