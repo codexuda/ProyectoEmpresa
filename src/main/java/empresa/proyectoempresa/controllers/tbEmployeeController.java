@@ -17,39 +17,40 @@ public class tbEmployeeController {
     // metodo listar toda la tabla
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
     public List<tbEmployee> listar() {
-        return repositories.findAll();
+        return repository.findAll();
     }
 
     // metodo listar un elemento por id
     @RequestMapping(value = "/obtener/{idemp}", method = RequestMethod.GET)
     public tbEmployee obtener(@PathVariable long idemp) {
-        return repositories.findById(idemp).getidemp();
+        return repository.findById(idemp).get();
     }
 
     // metodo listar un elemento por correo
     @RequestMapping(value = "/buscar/{email}", method = RequestMethod.GET)
     public tbEmployee buscar(@PathVariable long email) {
-        return repositories.buscar(email);
+        return repository.fin(email);
     }
 
     // metodo crear un registro
     @RequestMapping(value = "/agregar", method = RequestMethod.POST)
     public tbEmployee crear(@RequestBody tbEmployee employee) {
-        return repositories.save(employee);
+        return repository.save(employee);
 
     }
 
     // metodo editar un registro
     @RequestMapping(value = "/modificar", method = RequestMethod.PUT)
     public tbEmployee actualizar(@RequestBody tbEmployee employee) {
-        return repositories.save(employee);
+        return repository.save(employee);
 
     }
 
     // metodo eliminar un registro
-    @RequestMapping(value = "/eliminar{idemp}", method = RequestMethod.DELETE)
-    public tbEmployee eliminarEmpleado(@PathVariable long idemp) {
-        return repositories.eliminarEmpleado(idemp);
-
+    @RequestMapping(value = "/eliminar/{idemp}", method = RequestMethod.DELETE)
+    public String eliminarEmpleado(@PathVariable long idemp) {
+        tbEmployee employee=repository.findById(idemp).get();
+        repository.delete(employee);
+        return "Eliminado con éxito";
     }
 }

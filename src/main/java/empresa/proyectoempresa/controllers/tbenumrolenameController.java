@@ -22,8 +22,8 @@ public class tbenumrolenameController {
     }
 
     @RequestMapping(value = "/obtener/{idrole}", method = RequestMethod.GET)
-    public tbenumrolename obtener(@pathVariable long idrole) {
-        return repositories.findById(idrole).getIdrole();
+    public tbenumrolename obtener(@PathVariable long idrole) {
+        return repositories.findById(idrole).get();
     }
     @RequestMapping(value="/agregar",method = RequestMethod.POST)
     public tbenumrolename crear(@RequestBody tbenumrolename role){
