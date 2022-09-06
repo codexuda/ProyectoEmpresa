@@ -26,7 +26,7 @@ public class tbEmployee {
 
     @ManyToOne
     @JoinColumn(name = "ident", referencedColumnName = "ident")
-    private tbEnterprise enterprise;
+    private long enterprise;
 
     @Column(name = "updatedate", nullable = true)
     private Date updatedate;
@@ -64,23 +64,23 @@ public class tbEmployee {
         return profile;
     }
 
-    public void setIdprof(tbProfile profile) {
+    public void setProfile(long profile) {
         this.profile = profile;
     }
 
-    public long getenumrolename() {
+    public long getEnumrolename() {
         return Enumrolename;
     }
 
-    public void setIdrole(tbenumrolename Enumrolename) {
-        this.Enumrolename = Enumrolename;
+    public void setEnumrolename(long enumrolename) {
+        Enumrolename = enumrolename;
     }
 
-    public long gettbEnterprise() {
+    public long getEnterprise() {
         return enterprise;
     }
 
-    public void setIdent(tbEnterprise tbenterprise) {
+    public void setEnterprise(long enterprise) {
         this.enterprise = enterprise;
     }
 
@@ -99,5 +99,4 @@ public class tbEmployee {
     public void setCreatedate(Date createdate) {
         this.createdate = createdate;
     }
-
 }
