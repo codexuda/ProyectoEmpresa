@@ -16,5 +16,14 @@ public class tbProfileController {
     @Autowired
     private tbProfileRepository repository;
 
+    @RequestMapping(value = "/listar", method = RequestMethod.GET)
+    public List<tbProfile> listar() {
+        return repository.findAll();
+
+    }
+
+    
+
+
     
 }
