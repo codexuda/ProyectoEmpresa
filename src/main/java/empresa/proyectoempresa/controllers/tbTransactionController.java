@@ -20,13 +20,13 @@ public class tbTransactionController {
 
     }
     //Consultar un transaccion por ID---"PATCH"
-    @RequestMapping(value = "/buscartransaccion/{idTran}", method = RequestMethod.GET)
-    public tbTransaction buscartransaccion(@PathVariable long idTran) {
-        return repositiorio.findById(idTran).get();
+    @RequestMapping(value = "/buscartransaccion/{idtran}", method = RequestMethod.GET)
+    public tbTransaction buscartransaccion(@PathVariable long idtran) {
+        return repositiorio.findById(idtran).get();
     }
 
      //Actulización parcial -- PATCH
-     @RequestMapping(value = "/update/{idTran}", method =  RequestMethod.PATCH)
+     @RequestMapping(value = "/update/{idtran}", method =  RequestMethod.PATCH)
      public tbTransaction actualizar(@RequestBody tbTransaction tbtransaction){
      return repositiorio.save(tbtransaction);
      }
@@ -37,8 +37,8 @@ public class tbTransactionController {
     }
     //Eliminar transaccion----delete
     @RequestMapping(value = "/delete/{ident}", method = RequestMethod.DELETE)
-    public String eliminar(@PathVariable long idTran){
-        tbTransaction tbtransaction=repositiorio.findById(idTran).get();
+    public String eliminar(@PathVariable long idtran){
+        tbTransaction tbtransaction=repositiorio.findById(idtran).get();
         repositiorio.delete(tbtransaction);
         return "Eliminada con exito";
     }
