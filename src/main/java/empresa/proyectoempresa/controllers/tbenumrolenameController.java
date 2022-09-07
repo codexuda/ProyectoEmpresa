@@ -31,9 +31,21 @@ public class tbenumrolenameController {
      
     }
 
-    @RequestMapping(value="/modificar",method = RequestMethod.PUT)
+    //@RequestMapping(value="/modificar",method = RequestMethod.PUT)
+    //public tbenumrolename actualizar(@RequestBody tbenumrolename role){
+    //    return repositories.save(role);
+
+    //metodo para editar registros
+    @RequestMapping(value = "/update/{idrole}", method =  RequestMethod.PATCH)
     public tbenumrolename actualizar(@RequestBody tbenumrolename role){
-        return repositories.save(role);
-     
+        return repository.save(role);    
+   
     }
+    // metodo eliminar un registro
+    @RequestMapping(value = "/eliminar/{idrole}", method = RequestMethod.DELETE)
+    public String eliminarRole(@PathVariable long idrole) {
+        tbenumrolename role=repository.findById(idrole).get();
+        repository.delete(role);
+        return "Eliminado con éxito";
+
 }

@@ -34,10 +34,15 @@ public class tbEmployeeController {
     }
 
     // metodo editar un registro
-    @RequestMapping(value = "/modificar", method = RequestMethod.PUT)
-    public tbEmployee actualizar(@RequestBody tbEmployee employee) {
-        return repository.save(employee);
+    //@RequestMapping(value = "/modificar", method = RequestMethod.PUT)
+    //public tbEmployee actualizar(@RequestBody tbEmployee employee) {
+    //    return repository.save(employee);
+    //}
 
+    //metodo para editar registros
+    @RequestMapping(value = "/update/{idemp}", method =  RequestMethod.PATCH)
+    public tbEmployee actualizar(@RequestBody tbEmployee employee){
+        return repository.save(employee);
     }
 
     // metodo eliminar un registro
