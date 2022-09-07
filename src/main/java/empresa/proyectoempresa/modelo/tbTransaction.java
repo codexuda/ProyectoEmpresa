@@ -12,8 +12,8 @@ public class tbTransaction {
     //Primary Key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idTran")
-    private Long idTran;
+    @Column(name = "idtran")
+    private Long idtran;
 
  
     @Column(name = "concept", nullable = true, length = 100)
@@ -23,13 +23,13 @@ public class tbTransaction {
     private Double amount;
 
     //Foreing Key
-    @ManyToOne
-    @JoinColumn(name="idEmp", referencedColumnName = "idEmp" )
-    private Double idEmp;
+    //@ManyToOne
+    //@JoinColumn(name="idemp", referencedColumnName = "idemp" )
+    //private Double idemp;
     //Foreing Key
-    @ManyToOne
-    @JoinColumn(name="idEnt", referencedColumnName = "idEnt" )
-    private Double idEnt;
+    //@ManyToOne
+    //@JoinColumn(name="idEnt", referencedColumnName = "idEnt" )
+    //private Double idEnt;
 
     
     @Column(name="createdAt", nullable=true)
@@ -43,14 +43,14 @@ public class tbTransaction {
   
     
      //Cosntructor
-
-    public tbTransaction(Long idTran, String concept, Double amount, Double idEmp, Double idEnt, String createdAt,
+                                                                    //Double idemp,Double idEnt,                                     
+    public tbTransaction(Long idtran, String concept, Double amount, String createdAt,
             Date updatedAt) {
-        this.idTran = idTran;
+        this.idtran = idtran;
         this.concept = concept;
         this.amount = amount;
-        this.idEmp = idEmp;
-        this.idEnt = idEnt;
+        //this.idemp = idemp;
+        //this.idEnt = idEnt;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -58,12 +58,12 @@ public class tbTransaction {
     //Getters and Setters
     public tbTransaction() {}
 
-    public Long getIdTran() {
-        return idTran;
+    public Long getidtran() {
+        return idtran;
     }
 
-    public void setIdTran(Long idTran) {
-        this.idTran = idTran;
+    public void setidtran(Long idtran) {
+        this.idtran = idtran;
     }
 
     public String getConcept() {
@@ -82,21 +82,21 @@ public class tbTransaction {
         this.amount = amount;
     }
 
-    public Double getIdEmp() {
-        return idEmp;
-    }
+    //public Double getidemp() {
+      //  return idemp;
+    //}
 
-    public void setIdEmp(Double idEmp) {
-        this.idEmp = idEmp;
-    }
+    //public void setidemp(Double idemp) {
+    //    this.idemp = idemp;
+    //}
 
-    public Double getIdEnt() {
-        return idEnt;
-    }
+    //public Double getIdEnt() {
+    //    return idEnt;
+    //}
 
-    public void setIdEnt(Double idEnt) {
-        this.idEnt = idEnt;
-    }
+    //public void setIdEnt(Double idEnt) {
+    //    this.idEnt = idEnt;
+    //}
 
     public String getCreatedAt() {
         return createdAt;
