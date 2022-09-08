@@ -7,6 +7,12 @@ import javax.persistence.*;
 @Table(name="tbTransaction")
 public class tbTransaction {
 
+
+    //Cosntructor vacio para que funcione el metodo get (find all)
+    public tbTransaction(){
+
+    }
+
     //Atributos
 
     //Primary Key
