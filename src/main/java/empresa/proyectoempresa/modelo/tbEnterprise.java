@@ -1,85 +1,44 @@
 package empresa.proyectoempresa.modelo;
 
-
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CreationTimestamp;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 @Entity
+@AllArgsConstructor
+@Data
 public class tbEnterprise  {
+
+    public tbEnterprise() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ident;
+    @Column(name = "ident")
+    private Long id;
 
     @Column(name="nameenterprise")
-    private String nameenterprise;
+    private String name;
 
     @Column(name="address")
     private String address;
 
     @Column(name = "phone")
-    private String phone;
+    private int phone;
 
-    @Column(name="createdate")
-    private Date createdate;
+    @Column(name="createdat", updatable = false)
+    @CreationTimestamp
+    private LocalDate created;
 
-    @Column(name="updatedate")
-    private Date updatedate;
+    @Column(name="updatedat")
+    private LocalDate updated;
 
-    //Constructor
-    public tbEnterprise(long ident, String nameenterprise, String address, String phone, Date createdate, Date updatedate) {
-        this.ident = ident;
-        this.nameenterprise = nameenterprise;
-        this.address = address;
-        this.phone = phone;
-        this.createdate = createdate;
-        this.updatedate = updatedate;
-    }
-
-    // Getters & Setters
-    public String getPhone() {
-        return phone;
-    }
     
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Date getcreatedate() {
-        return createdate;
-    }
-    public void setcreatedate(Date createdate) {
-        this.createdate = createdate;
-    }
-
-    public Date getupdatedate() {
-        return updatedate;
-    }
-    public void setupdatedate(Date updatedate) {
-        this.updatedate = updatedate;
-    }
-
-    public long getIdent() {
-        return ident;
-    }
-    public void setIdent(long ident) {
-        this.ident = ident;
-    }
-
-    public String getNameenterprise() {
-        return nameenterprise;
-    }
-    public void setNameenterprise(String nameenterprise) {
-        this.nameenterprise = nameenterprise;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-    public void setAddress(String address) {
-        this.address = address;
-    }
 }
 
 

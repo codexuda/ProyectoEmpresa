@@ -1,8 +1,12 @@
 package empresa.proyectoempresa.controllers;
 
+import java.lang.reflect.Field;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import empresa.proyectoempresa.modelo.tbEnterprise;
@@ -15,31 +19,51 @@ public class tbEnterpriseController {
     private tbEnterpriseRepository repository;
 
     @GetMapping(value = "/list")
-    public List<tbEnterprise> list() {
+    public List<tbEnterprise> listar() {
         return repository.findAll();
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @PostMapping(value = "/add")
     public tbEnterprise agregar(@RequestBody tbEnterprise enterprise){
+        enterprise.setCreated(LocalDate.now());
         return repository.save(enterprise);
     }
     
-    @RequestMapping(value = "/get/{ident}", method =  RequestMethod.GET)
+
+    //Por ID
+    @GetMapping(value = "/{ident}")
     public tbEnterprise obtener(@PathVariable long ident){
         return repository.findById(ident).get();
     }
 
-
-    //En desarrollo
-    @RequestMapping(value = "/update/{ident}", method =  RequestMethod.PATCH)
-    public tbEnterprise actualizar(@RequestBody tbEnterprise enterprise){
-        return repository.save(enterprise);
-    }
-    //En desarrollo
-    @RequestMapping(value = "/delete/{ident}", method = RequestMethod.DELETE)
-    public String eliminar(@PathVariable long ident){
+    /*@PatchMapping(value = "/update/{ident}")
+    public tbEnterprise actualizar(@PathVariable long ident, tbEnterprise enterprise_upd){
         tbEnterprise enterprise=repository.findById(ident).get();
-        repository.delete(enterprise);
+        enterprise.setName(enterprise_upd.getName());
+        enterprise.setAddress(enterprise_upd.getAddress());
+        enterprise.setPhone(enterprise_upd.getPhone());
+        enterprise.setCreated(enterprise_upd.getCreated());
+        enterprise.setUpdated(enterprise_upd.getUpdated());
+        return repository.save(enterprise);
+    }*/
+    @PatchMapping(value = "/{ident}/update" )
+    public tbEnterprise actualizar(@PathVariable long ident, @RequestBody Map<Object, Object> fields){
+        tbEnterprise enterprise=repository.findById(ident).get();
+        fields.forEach((k,v)->{
+            Field field= ReflectionUtils.findField(tbEnterprise.class, (String) k);
+            field.setAccessible(true);
+            ReflectionUtils.setField(field, enterprise, v);
+        });
+        enterprise.setUpdated(LocalDate.now());
+        return repository.save(enterprise);
+
+    }
+
+    @DeleteMapping(value = "/{ident}/delete")
+    public String eliminar(@PathVariable long ident){
+        repository.delete(repository.findById(ident).get());
         return "Eliminada con exito";
     }
+
+    
 }

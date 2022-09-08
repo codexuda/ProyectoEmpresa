@@ -9,25 +9,25 @@ import empresa.proyectoempresa.modelo.tbEmployee;
 import empresa.proyectoempresa.repositories.tbEmployeeRepository;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/employee")
 public class tbEmployeeController {
     @Autowired
     private tbEmployeeRepository repository;
 
     // metodo listar toda la tabla
-    @RequestMapping(value = "/listar", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<tbEmployee> listar() {
         return repository.findAll();
     }
 
     // metodo listar un elemento por id
-    @RequestMapping(value = "/buscar/{idemp}", method = RequestMethod.GET)
+    @RequestMapping(value = "/get/{idemp}", method = RequestMethod.GET)
     public tbEmployee obtener(@PathVariable long idemp) {
         return repository.findById(idemp).get();
     }
 
     // metodo crear un registro
-    @RequestMapping(value = "/agregar", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public tbEmployee crear(@RequestBody tbEmployee employee) {
         return repository.save(employee);
 
@@ -40,13 +40,13 @@ public class tbEmployeeController {
     //}
 
     //metodo para editar registros
-    @RequestMapping(value = "/actualizar/{idemp}", method =  RequestMethod.PATCH)
+    @RequestMapping(value = "/update/{idemp}", method =  RequestMethod.PATCH)
     public tbEmployee actualizar(@RequestBody tbEmployee employee){
         return repository.save(employee);
     }
 
     // metodo eliminar un registro
-    @RequestMapping(value = "/borrar/{idemp}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/{idemp}", method = RequestMethod.DELETE)
     public String eliminarEmpleado(@PathVariable long idemp) {
         tbEmployee employee=repository.findById(idemp).get();
         repository.delete(employee);
