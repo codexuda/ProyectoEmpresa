@@ -13,8 +13,10 @@ import empresa.proyectoempresa.repositories.tbProfileRepository;
 @RequestMapping("/profile")
 public class tbProfileController {
 
+
     @Autowired
     private tbProfileRepository repository;
+
 
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
     public List<tbProfile> listar() {
@@ -22,8 +24,16 @@ public class tbProfileController {
 
     }
 
-    
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public tbProfile agregar(@RequestBody tbProfile profile){
+        return repository.save(profile);
+    }
 
 
-    
+    @RequestMapping(value="/modificar",method = RequestMethod.PUT)
+    public tbProfile actualizar(@RequestBody tbProfile profile){
+        return repository.save(profile);
+     
+    }
 }

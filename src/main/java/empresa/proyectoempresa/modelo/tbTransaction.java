@@ -25,15 +25,15 @@ public class tbTransaction {
     //Foreing Key
     @ManyToOne
     @JoinColumn(name="idEmp", referencedColumnName = "idEmp" )
-    private Double idEmp;
+    private tbEmployee idEmp;
     //Foreing Key
     @ManyToOne
     @JoinColumn(name="idEnt", referencedColumnName = "idEnt" )
-    private Double idEnt;
+    private tbEnterprise idEnt;
 
     
     @Column(name="createdAt", nullable=true)
-    private String createdAt;
+    private Date createdAt;
 
 
     @Column(name="updatedAt", nullable=true)
@@ -44,7 +44,7 @@ public class tbTransaction {
     
      //Cosntructor
 
-    public tbTransaction(Long idTran, String concept, Double amount, Double idEmp, Double idEnt, String createdAt,
+    public tbTransaction(Long idTran, String concept, Double amount, tbEmployee idEmp, tbEnterprise idEnt, Date createdAt,
             Date updatedAt) {
         this.idTran = idTran;
         this.concept = concept;
@@ -54,65 +54,110 @@ public class tbTransaction {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-    
+
     //Getters and Setters
-    public tbTransaction() {}
+
 
     public Long getIdTran() {
         return idTran;
     }
 
+
+
+
     public void setIdTran(Long idTran) {
         this.idTran = idTran;
     }
+
+
+
 
     public String getConcept() {
         return concept;
     }
 
+
+
+
     public void setConcept(String concept) {
         this.concept = concept;
     }
+
+
+
 
     public Double getAmount() {
         return amount;
     }
 
+
+
+
     public void setAmount(Double amount) {
         this.amount = amount;
     }
 
-    public Double getIdEmp() {
+
+
+
+    public tbEmployee getIdEmp() {
         return idEmp;
     }
 
-    public void setIdEmp(Double idEmp) {
+
+
+
+    public void setIdEmp(tbEmployee idEmp) {
         this.idEmp = idEmp;
     }
 
-    public Double getIdEnt() {
+
+
+
+    public tbEnterprise getIdEnt() {
         return idEnt;
     }
 
-    public void setIdEnt(Double idEnt) {
+
+
+
+    public void setIdEnt(tbEnterprise idEnt) {
         this.idEnt = idEnt;
     }
 
-    public String getCreatedAt() {
+
+
+
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+
+
+
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
+
+
+
 
     public Date getUpdatedAt() {
         return updatedAt;
     }
 
+
+
+
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    
+    
+
+    
+    
 
     
 

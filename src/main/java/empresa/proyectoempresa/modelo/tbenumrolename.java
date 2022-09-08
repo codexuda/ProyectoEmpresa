@@ -2,13 +2,16 @@ package empresa.proyectoempresa.modelo;
 
 import javax.persistence.*;
 
-@Entity
-public class tbenumrolename {
+@Table(name = "idrole")
+public enum tbenumrolename {
 
+    ADMIN, OPERARIO
+
+    /* 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idrole")
-    private long idrole;
+    private Long idrole;
 
     @Column(name = "roles", length = 100)
     private String roles;
@@ -33,5 +36,6 @@ public class tbenumrolename {
     public void setRoles(String roles) {
         this.roles = roles;
     }
+    */
 
 }

@@ -10,7 +10,7 @@ public class tbEmployee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idemp")
-    private long idemp;
+    private Long idemp;
     
     @Column(name = "email", length = 100, unique = true)
     private String email;
@@ -18,15 +18,15 @@ public class tbEmployee {
     
     @ManyToOne
     @JoinColumn(name = "idprof", referencedColumnName = "idprof" )
-    private long profile;
+    private tbProfile profile;
     
-    @ManyToOne
-    @JoinColumn(name ="idrole", referencedColumnName = "idrole")
-    private long Enumrolename;
+    @Enumerated(EnumType.STRING)
+    @Column(name ="idrole")
+    private tbenumrolename Enumrolename;
 
     @ManyToOne
     @JoinColumn(name = "ident", referencedColumnName = "ident")
-    private long enterprise;
+    private tbEnterprise enterprise;
 
     @Column(name = "updatedate", nullable = true)
     private Date updatedate;
@@ -34,7 +34,7 @@ public class tbEmployee {
     @Column(name = "createdate", nullable = true)
     private Date createdate;
 
-    public tbEmployee(Long idemp, String email, long idprof, long idrole, long ident, Date updatedate, Date createdate) {
+    public tbEmployee(Long idemp, String email, tbProfile idprof, tbenumrolename idrole, tbEnterprise ident, Date updatedate, Date createdate) {
         this.idemp = idemp;
         this.email = email;
         this.profile = idprof;
@@ -44,11 +44,11 @@ public class tbEmployee {
         this.createdate = createdate;
     }
 
-    public long getIdemp() {
+    public Long getIdemp() {
         return idemp;
     }
 
-    public void setIdemp(long idemp) {
+    public void setIdemp(Long idemp) {
         this.idemp = idemp;
     }
 
@@ -60,27 +60,27 @@ public class tbEmployee {
         this.email = email;
     }
 
-    public long getProfile() {
+    public tbProfile getProfile() {
         return profile;
     }
 
-    public void setProfile(long profile) {
+    public void setProfile(tbProfile profile) {
         this.profile = profile;
     }
 
-    public long getEnumrolename() {
+    public tbenumrolename getEnumrolename() {
         return Enumrolename;
     }
 
-    public void setEnumrolename(long enumrolename) {
+    public void setEnumrolename(tbenumrolename enumrolename) {
         Enumrolename = enumrolename;
     }
 
-    public long getEnterprise() {
+    public tbEnterprise getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(long enterprise) {
+    public void setEnterprise(tbEnterprise enterprise) {
         this.enterprise = enterprise;
     }
 
@@ -99,4 +99,7 @@ public class tbEmployee {
     public void setCreatedate(Date createdate) {
         this.createdate = createdate;
     }
+
+   
+    
 }

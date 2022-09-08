@@ -9,7 +9,7 @@ import empresa.proyectoempresa.modelo.tbEmployee;
 import empresa.proyectoempresa.repositories.tbEmployeeRepository;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/employees")
 public class tbEmployeeController {
     @Autowired
     private tbEmployeeRepository repository;
@@ -21,7 +21,7 @@ public class tbEmployeeController {
     }
 
     // metodo listar un elemento por id
-    @RequestMapping(value = "/obtener/{idemp}", method = RequestMethod.GET)
+    @RequestMapping(value = "/buscar/{idemp}", method = RequestMethod.GET)
     public tbEmployee obtener(@PathVariable long idemp) {
         return repository.findById(idemp).get();
     }
@@ -40,13 +40,13 @@ public class tbEmployeeController {
     //}
 
     //metodo para editar registros
-    @RequestMapping(value = "/update/{idemp}", method =  RequestMethod.PATCH)
+    @RequestMapping(value = "/actualizar/{idemp}", method =  RequestMethod.PATCH)
     public tbEmployee actualizar(@RequestBody tbEmployee employee){
         return repository.save(employee);
     }
 
     // metodo eliminar un registro
-    @RequestMapping(value = "/eliminar/{idemp}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/borrar/{idemp}", method = RequestMethod.DELETE)
     public String eliminarEmpleado(@PathVariable long idemp) {
         tbEmployee employee=repository.findById(idemp).get();
         repository.delete(employee);

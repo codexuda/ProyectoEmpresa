@@ -3,7 +3,7 @@ package empresa.proyectoempresa.modelo;
 import javax.persistence.*;
 
 @Entity
-@Table(name="profile")
+@Table(name="tb_profile")
 public class tbProfile {
     @Id
     private long idprof;
