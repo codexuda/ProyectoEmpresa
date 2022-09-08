@@ -4,6 +4,7 @@ package empresa.proyectoempresa.modelo;
 import java.sql.Date;
 
 import javax.persistence.*;
+
 @Entity
 public class tbEnterprise  {
 
@@ -11,23 +12,23 @@ public class tbEnterprise  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ident;
 
-    @Column(name="nameenterprise",  length=100)
+    @Column(name="nameenterprise")
     private String nameenterprise;
 
-    @Column(name="address", nullable=true, length=150)
+    @Column(name="address")
     private String address;
 
     @Column(name = "phone")
-    private long phone;
+    private String phone;
 
-    @Column(name="createdate", nullable=true)
+    @Column(name="createdate")
     private Date createdate;
 
-    @Column(name="updatedate", nullable=true)
+    @Column(name="updatedate")
     private Date updatedate;
 
     //Constructor
-    public tbEnterprise(long ident, String nameenterprise, String address, long phone, Date createdate, Date updatedate) {
+    public tbEnterprise(long ident, String nameenterprise, String address, String phone, Date createdate, Date updatedate) {
         this.ident = ident;
         this.nameenterprise = nameenterprise;
         this.address = address;
@@ -37,11 +38,11 @@ public class tbEnterprise  {
     }
 
     // Getters & Setters
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
     
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
