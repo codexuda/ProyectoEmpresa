@@ -16,10 +16,10 @@ public class tbTransaction {
     private Long idtran;
 
  
-    @Column(name = "concept", nullable = true, length = 100)
+    @Column(name = "concept", length = 100)
     private String concept;
 
-    @Column(name="amount", nullable=true)
+    @Column(name="amount")
     private Double amount;
 
     //Foreing Key
@@ -32,11 +32,11 @@ public class tbTransaction {
     //private Double idEnt;
 
     
-    @Column(name="createdAt", nullable=true)
-    private String createdAt;
+    @Column(name="createdAt")
+    private Date createdAt;
 
 
-    @Column(name="updatedAt", nullable=true)
+    @Column(name="updatedAt")
     private Date updatedAt;
   
      
@@ -44,8 +44,7 @@ public class tbTransaction {
     
      //Cosntructor
                                                                     //Double idemp,Double idEnt,                                     
-    public tbTransaction(Long idtran, String concept, Double amount, String createdAt,
-            Date updatedAt) {
+    public tbTransaction(Long idtran, String concept, Double amount, Date createdAt,Date updatedAt) {
         this.idtran = idtran;
         this.concept = concept;
         this.amount = amount;
@@ -98,11 +97,11 @@ public class tbTransaction {
     //    this.idEnt = idEnt;
     //}
 
-    public String getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -113,6 +112,7 @@ public class tbTransaction {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+    
 
     
 

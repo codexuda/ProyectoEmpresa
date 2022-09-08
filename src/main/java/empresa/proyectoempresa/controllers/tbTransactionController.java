@@ -32,7 +32,7 @@ public class tbTransactionController {
      }
     //Agregar transaccion-----POST
     @RequestMapping (value = "/add",method = RequestMethod.POST)
-     public tbTransaction create(tbTransaction tbtransaction){  
+     public tbTransaction create(@RequestBody tbTransaction tbtransaction){  
         return repositiorio.save(tbtransaction) ;
     }
     //Eliminar transaccion----delete
