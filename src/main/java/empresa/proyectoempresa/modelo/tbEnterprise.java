@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,7 +35,8 @@ public class tbEnterprise  {
     @Column(name="createdat", updatable = false)
     @CreationTimestamp
     private LocalDate created;
-
+    
+    @UpdateTimestamp
     @Column(name="updatedat")
     private LocalDate updated;
 

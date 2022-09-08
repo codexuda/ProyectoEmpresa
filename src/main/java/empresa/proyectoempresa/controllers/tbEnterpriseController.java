@@ -26,6 +26,7 @@ public class tbEnterpriseController {
     @PostMapping(value = "/add")
     public tbEnterprise agregar(@RequestBody tbEnterprise enterprise){
         enterprise.setCreated(LocalDate.now());
+        enterprise.setUpdated(LocalDate.now());
         return repository.save(enterprise);
     }
     
