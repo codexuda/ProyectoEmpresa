@@ -38,14 +38,15 @@ public class tbenumrolenameController {
     //metodo para editar registros
     @RequestMapping(value = "/update/{idrole}", method =  RequestMethod.PATCH)
     public tbenumrolename actualizar(@RequestBody tbenumrolename role){
-        return repository.save(role);    
+        return repositories.save(role);    
    
     }
     // metodo eliminar un registro
     @RequestMapping(value = "/eliminar/{idrole}", method = RequestMethod.DELETE)
     public String eliminarRole(@PathVariable long idrole) {
-        tbenumrolename role=repository.findById(idrole).get();
-        repository.delete(role);
+        tbenumrolename role=repositories.findById(idrole).get();
+        repositories.delete(role);
         return "Eliminado con éxito";
+    }
 
 }
