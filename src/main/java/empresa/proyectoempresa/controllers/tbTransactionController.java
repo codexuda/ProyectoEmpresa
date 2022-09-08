@@ -19,7 +19,7 @@ public class tbTransactionController {
         return repositiorio.findAll();
 
     }
-    //Consultar un transaccion por ID---"PATCH"
+    //Consultar un transaccion por ID---"
     @RequestMapping(value = "/get/{idTran}", method = RequestMethod.GET)
     public tbTransaction buscartransaccion(@PathVariable long idTran) {
         return repositiorio.findById(idTran).get();
@@ -32,18 +32,15 @@ public class tbTransactionController {
      }
     //Agregar transaccion-----POST
     @RequestMapping (value = "/add",method = RequestMethod.POST)
-     public tbTransaction create(tbTransaction tbtransaction){  
+     public tbTransaction create(@RequestBody tbTransaction tbtransaction){  
         return repositiorio.save(tbtransaction) ;
     }
     //Eliminar transaccion----delete
-    @RequestMapping(value = "/delete/{ident}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "delete/{idTran}")
     public String eliminar(@PathVariable long idTran){
-        tbTransaction tbtransaction=repositiorio.findById(idTran).get();
-        repositiorio.delete(tbtransaction);
+        repositiorio.delete(repositiorio.findById(idTran).get());
         return "Eliminada con exito";
-    }
 
-
-    
+   }    
 
 }
