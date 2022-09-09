@@ -1,6 +1,8 @@
 package empresa.proyectoempresa.controllers;
 
 import org.springframework.util.ReflectionUtils;
+
+import empresa.proyectoempresa.repositories.tbEnterpriseRepository;
 import empresa.proyectoempresa.repositories.tbTransactionRepository;
 import empresa.proyectoempresa.modelo.*;
 
@@ -13,53 +15,52 @@ import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.util.Map;
 
+
 @RestController
-@RequestMapping("/enterprises/{enterprise}/movements")
+@RequestMapping("/enterprises")
 public class tbTransactionController {
     //Ruta anterior: transactions   
     @Autowired
-    private tbTransactionRepository repositiorio;
+    private tbTransactionRepository repository;
 
     //Listar todas las transacciones----GET
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public List<tbTransaction> listarTransaccion() {
-        return repositiorio.findAll();
-
+    @GetMapping(value = "/{enterprise}/movements")
+    public List<tbTransaction> transaccionesPorEmpresa(@PathVariable tbEnterprise enterprise) {
+        return repository.findByEnterpriseId(enterprise.getId());
     }
+    
     //Consultar un transaccion por ID---"
-    @RequestMapping(value = "/get/{idTran}", method = RequestMethod.GET)
-    public tbTransaction buscartransaccion(@PathVariable long idTran) {
-        return repositiorio.findById(idTran).get();
+    @GetMapping(value = "/{enterprise}/movements/{idTran}")
+    public tbTransaction transaccionesPorId(@PathVariable long idTran) {
+        return repository.findById(idTran).get();
     }
 
-     //Actulización parcial -- PATCH
-     @RequestMapping(value = "/update/{idTran}", method =  RequestMethod.PATCH)
-     public tbTransaction actualizar(@RequestBody tbTransaction tbtransaction){
-     return repositiorio.save(tbtransaction);
-     }
     //Agregar transaccion-----POST
-    @RequestMapping (value = "/add",method = RequestMethod.POST)
-     public tbTransaction create(@RequestBody tbTransaction tbtransaction){  
-        return repositiorio.save(tbtransaction) ;
+    @PostMapping(value = "/{enterprise}/movements/add")
+     public tbTransaction create(@RequestBody tbTransaction transaction, @PathVariable tbEnterprise enterprise){
+        transaction.setEnterprise(enterprise);
+        transaction.setCreatedAt(LocalDate.now());
+        transaction.setUpdatedAt(LocalDate.now()); 
+        return repository.save(transaction) ;
     }
     //Eliminar transaccion----delete
-    @DeleteMapping(value = "delete/{idTran}")
+    @DeleteMapping(value = "/{enterprise}/movements/{idTran}/delete")
     public String eliminar(@PathVariable long idTran){
-        repositiorio.delete(repositiorio.findById(idTran).get());
+        repository.delete(repository.findById(idTran).get());
         return "Eliminada con exito";
 
     }
-
-    @PatchMapping(value = "/{idTran}/update" )
+    //Editar parcialmente ---- PATCH
+    @PatchMapping(value = "/{enterprise}/movements/{idTran}/update" )
     public tbTransaction actualizar(@PathVariable long idTran, @RequestBody Map<Object, Object> fields){
-        tbTransaction transaction=repositiorio.findById(idTran).get();
+        tbTransaction transaction=repository.findById(idTran).get();
         fields.forEach((k,v)->{
             Field field= ReflectionUtils.findField(tbTransaction.class, (String) k);
             field.setAccessible(true);
             ReflectionUtils.setField(field, transaction, v);
         });
         transaction.setUpdatedAt(LocalDate.now());       
-        return repositiorio.save(transaction);
+        return repository.save(transaction);
 
     }
    }    

@@ -38,7 +38,7 @@ public class tbTransaction {
     //Foreing Key
     @ManyToOne
     @JoinColumn(name="idEmp", referencedColumnName = "idEmp" )
-    private tbEmployee enployee;
+    private tbEmployee employee;
     //Foreing Key
     @ManyToOne
     @JoinColumn(name="idEnt", referencedColumnName = "idEnt" )

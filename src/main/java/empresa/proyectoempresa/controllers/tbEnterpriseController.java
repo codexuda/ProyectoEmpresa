@@ -18,7 +18,7 @@ public class tbEnterpriseController {
     @Autowired
     private tbEnterpriseRepository repository;
 
-    @GetMapping(value = "/list")
+    @GetMapping(value = "")
     public List<tbEnterprise> listar() {
         return repository.findAll();
     }
