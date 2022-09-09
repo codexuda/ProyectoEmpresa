@@ -1,7 +1,11 @@
 package empresa.proyectoempresa.modelo;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
+//import org.hibernate.annotations.UpdateTimestamp;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,10 +39,12 @@ public class tbEmployee {
     private tbEnterprise enterprise;
 
     @Column(name = "createdate", nullable = true)
-    private Date created;
+    @CreationTimestamp
+    private LocalDate created;
 
     @Column(name = "updatedate", nullable = true)
-    private Date updated;
+    @CreationTimestamp
+    private LocalDate updated;
 
    
 
