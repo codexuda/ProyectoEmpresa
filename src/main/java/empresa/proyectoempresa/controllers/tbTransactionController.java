@@ -14,9 +14,9 @@ import java.time.LocalDate;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/transactions")
+@RequestMapping("/enterprises/{enterprise}/movements")
 public class tbTransactionController {
-
+    //Ruta anterior: transactions   
     @Autowired
     private tbTransactionRepository repositiorio;
 
@@ -51,8 +51,8 @@ public class tbTransactionController {
     }
 
     @PatchMapping(value = "/{idTran}/update" )
-    public tbTransaction actualizar(@PathVariable long ident, @RequestBody Map<Object, Object> fields){
-        tbTransaction transaction=repositiorio.findById(ident).get();
+    public tbTransaction actualizar(@PathVariable long idTran, @RequestBody Map<Object, Object> fields){
+        tbTransaction transaction=repositiorio.findById(idTran).get();
         fields.forEach((k,v)->{
             Field field= ReflectionUtils.findField(tbTransaction.class, (String) k);
             field.setAccessible(true);
