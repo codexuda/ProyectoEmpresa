@@ -2,7 +2,6 @@ package empresa.proyectoempresa.controllers;
 
 import org.springframework.util.ReflectionUtils;
 
-import empresa.proyectoempresa.repositories.tbEnterpriseRepository;
 import empresa.proyectoempresa.repositories.tbTransactionRepository;
 import empresa.proyectoempresa.modelo.*;
 
