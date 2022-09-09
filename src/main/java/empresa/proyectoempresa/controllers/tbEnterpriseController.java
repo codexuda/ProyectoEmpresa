@@ -37,16 +37,8 @@ public class tbEnterpriseController {
         return repository.findById(ident).get();
     }
 
-    /*@PatchMapping(value = "/update/{ident}")
-    public tbEnterprise actualizar(@PathVariable long ident, tbEnterprise enterprise_upd){
-        tbEnterprise enterprise=repository.findById(ident).get();
-        enterprise.setName(enterprise_upd.getName());
-        enterprise.setAddress(enterprise_upd.getAddress());
-        enterprise.setPhone(enterprise_upd.getPhone());
-        enterprise.setCreated(enterprise_upd.getCreated());
-        enterprise.setUpdated(enterprise_upd.getUpdated());
-        return repository.save(enterprise);
-    }*/
+
+    //PATCH
     @PatchMapping(value = "/{ident}/update" )
     public tbEnterprise actualizar(@PathVariable long ident, @RequestBody Map<Object, Object> fields){
         tbEnterprise enterprise=repository.findById(ident).get();

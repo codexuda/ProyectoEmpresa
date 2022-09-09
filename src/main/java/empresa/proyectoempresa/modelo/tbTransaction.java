@@ -1,10 +1,14 @@
 package empresa.proyectoempresa.modelo;
 
-import java.sql.Date;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import java.time.LocalDate;
 
 @Entity
 @AllArgsConstructor
@@ -40,13 +44,13 @@ public class tbTransaction {
     @JoinColumn(name="idEnt", referencedColumnName = "idEnt" )
     private tbEnterprise enterprise;
 
-    
-    @Column(name="createdAt", nullable=true)
-    private Date createdAt;
+    @CreationTimestamp
+    @Column(name="createdAt")
+    private LocalDate createdAt;
 
-
-    @Column(name="updatedAt", nullable=true)
-    private Date updatedAt;
+    @UpdateTimestamp
+    @Column(name="updatedAt")
+    private LocalDate updatedAt;
   
 
 }

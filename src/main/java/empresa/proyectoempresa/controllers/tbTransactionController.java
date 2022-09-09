@@ -1,10 +1,17 @@
 package empresa.proyectoempresa.controllers;
 
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.util.ReflectionUtils;
 import empresa.proyectoempresa.repositories.tbTransactionRepository;
 import empresa.proyectoempresa.modelo.*;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.lang.reflect.Field;
+import java.time.LocalDate;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/transactions")
@@ -41,6 +48,20 @@ public class tbTransactionController {
         repositiorio.delete(repositiorio.findById(idTran).get());
         return "Eliminada con exito";
 
+    }
+
+    @PatchMapping(value = "/{idTran}/update" )
+    public tbTransaction actualizar(@PathVariable long ident, @RequestBody Map<Object, Object> fields){
+        tbTransaction transaction=repositiorio.findById(ident).get();
+        fields.forEach((k,v)->{
+            Field field= ReflectionUtils.findField(tbTransaction.class, (String) k);
+            field.setAccessible(true);
+            ReflectionUtils.setField(field, transaction, v);
+        });
+        transaction.setUpdatedAt(LocalDate.now());       
+        return repositiorio.save(transaction);
+
+    }
    }    
 
-}
+
