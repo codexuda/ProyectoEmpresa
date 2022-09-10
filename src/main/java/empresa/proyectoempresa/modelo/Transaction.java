@@ -2,18 +2,16 @@ package empresa.proyectoempresa.modelo;
 
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 import java.time.LocalDate;
 
 @Entity
 @AllArgsConstructor
 @Data
-@Table(name="TRANSACTIONS")
 public class Transaction {
     //Cosntructor
 
@@ -23,9 +21,8 @@ public class Transaction {
     //Primary Key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idTran")
+    @Column(name = "idtran")
     private long id;
-
  
     @Column(name = "concept", nullable = true, length = 100)
     private String concept;
@@ -35,20 +32,20 @@ public class Transaction {
 
     //Foreing Key
     @ManyToOne
-    @JoinColumn(name="user", referencedColumnName = "idEmp" )
+    @JoinColumn(name="employee", referencedColumnName = "idemp" )
     private Employee user;
 
     //Foreing Key
     @ManyToOne
-    @JoinColumn(name="enterprise", referencedColumnName = "idEnt" )
+    @JoinColumn(name="enterprise", referencedColumnName = "ident" )
     private Enterprise enterprise;
 
     @CreationTimestamp
-    @Column(name="createdAt")
+    @Column(name="createat", updatable = false)
     private LocalDate createdAt;
 
     @UpdateTimestamp
-    @Column(name="updatedAt")
+    @Column(name="updatedat")
     private LocalDate updatedAt;
   
 

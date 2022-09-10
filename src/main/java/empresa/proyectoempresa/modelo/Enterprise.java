@@ -1,7 +1,6 @@
 package empresa.proyectoempresa.modelo;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.*;
 
@@ -20,7 +19,7 @@ public class Enterprise  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idEnt")
+    @Column(name = "ident")
     private long id;
 
     @Column(name="name", unique = true)
@@ -34,12 +33,6 @@ public class Enterprise  {
 
     @Column(name="address")
     private String address;
-
-    @OneToMany(mappedBy = "enterprise")
-    private List<Employee> users;
-    
-    @OneToMany(mappedBy = "enterprise")
-    private List<Transaction> transactions;
     
     @Column(name="createdAt", updatable = false)
     @CreationTimestamp

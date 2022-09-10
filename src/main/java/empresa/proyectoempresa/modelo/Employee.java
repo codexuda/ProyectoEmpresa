@@ -1,8 +1,6 @@
 package empresa.proyectoempresa.modelo;
 
 import java.time.LocalDate;
-import java.util.List; 
-
 import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -20,32 +18,29 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idEmp")
+    @Column(name = "idemp")
     private long id;
     
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
     @OneToOne
-    @JoinColumn(name = "profile", referencedColumnName = "idProf" )
+    @JoinColumn(name = "profile", referencedColumnName = "idprof" )
     private Profile profile;
     
     @Enumerated(EnumType.ORDINAL)
     @Column(name ="roleName")
-    private enumrolename rol;
+    private Enum_RoleName rol;
 
     @ManyToOne
-    @JoinColumn(name = "enterprise", referencedColumnName = "idEnt")
+    @JoinColumn(name = "enterprise", referencedColumnName = "ident")
     private Enterprise enterprise;
 
-    @OneToMany(mappedBy = "user")
-    private List<Transaction> transactions;
-
-    @Column(name = "createdAt", nullable = true)
+    @Column(name = "createdat", nullable = true)
     @CreationTimestamp
     private LocalDate created;
 
-    @Column(name = "updatedAt", nullable = true)
+    @Column(name = "updatedat", nullable = true)
     @UpdateTimestamp
     private LocalDate updated;
 

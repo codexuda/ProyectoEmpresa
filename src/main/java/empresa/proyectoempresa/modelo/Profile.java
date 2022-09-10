@@ -10,7 +10,6 @@ import lombok.Data;
 @Entity
 @AllArgsConstructor
 @Data
-@Table(name="PROFILES")
 public class Profile {
     
     public Profile(){}
@@ -31,10 +30,6 @@ public class Profile {
 
     @Column(name = "image")
     private String image;
-
-    @OneToOne(mappedBy = "profile")
-    private Employee user;
-
     
     
 }
