@@ -38,8 +38,8 @@ public class TransactionController {
     @PostMapping(value = "/{enterprise}/movements/add")
      public Transaction create(@RequestBody Transaction transaction, @PathVariable Enterprise enterprise){
         transaction.setEnterprise(enterprise);
-        transaction.setCreatedAt(LocalDate.now());
-        transaction.setUpdatedAt(LocalDate.now()); 
+        transaction.setCreated(LocalDate.now());
+        transaction.setUpdated(LocalDate.now()); 
         return repository.save(transaction) ;
     }
     //Eliminar transaccion----delete
@@ -58,7 +58,7 @@ public class TransactionController {
             field.setAccessible(true);
             ReflectionUtils.setField(field, transaction, v);
         });
-        transaction.setUpdatedAt(LocalDate.now());       
+        transaction.setUpdated(LocalDate.now());       
         return repository.save(transaction);
 
     }

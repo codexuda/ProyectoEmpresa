@@ -22,10 +22,10 @@ public class Profile {
     @Column(name = "phone", nullable = false)
     private long phone;
 
-    @Column(name = "createdAt")
+    @Column(name = "created_at")
     private LocalDate created;
 
-    @Column(name = "updatedAt")
+    @Column(name = "updated_at")
     private LocalDate updated;
 
     @Column(name = "image")

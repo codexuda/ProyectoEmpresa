@@ -36,11 +36,11 @@ public class Employee {
     @JoinColumn(name = "enterprise", referencedColumnName = "ident")
     private Enterprise enterprise;
 
-    @Column(name = "createdat", nullable = true)
+    @Column(name = "created_at", nullable = true)
     @CreationTimestamp
     private LocalDate created;
 
-    @Column(name = "updatedat", nullable = true)
+    @Column(name = "updated_at", nullable = true)
     @UpdateTimestamp
     private LocalDate updated;
 

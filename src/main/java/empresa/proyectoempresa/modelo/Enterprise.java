@@ -34,12 +34,12 @@ public class Enterprise  {
     @Column(name="address")
     private String address;
     
-    @Column(name="createdAt", updatable = false)
+    @Column(name="created_at", updatable = false)
     @CreationTimestamp
     private LocalDate created;
     
     @UpdateTimestamp
-    @Column(name="updatedAt")
+    @Column(name="updated_at")
     private LocalDate updated;
 
     
