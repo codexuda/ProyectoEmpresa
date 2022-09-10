@@ -13,20 +13,18 @@ import java.time.LocalDate;
 @Entity
 @AllArgsConstructor
 @Data
-@Table(name="tbTransaction")
+@Table(name="TRANSACTIONS")
 public class Transaction {
     //Cosntructor
 
-    public Transaction(){
-
-    }
+    public Transaction(){}
     
 
     //Primary Key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idTran")
-    private Long id;
+    private long id;
 
  
     @Column(name = "concept", nullable = true, length = 100)
@@ -38,7 +36,8 @@ public class Transaction {
     //Foreing Key
     @ManyToOne
     @JoinColumn(name="user", referencedColumnName = "idEmp" )
-    private Employee employee;
+    private Employee user;
+
     //Foreing Key
     @ManyToOne
     @JoinColumn(name="enterprise", referencedColumnName = "idEnt" )

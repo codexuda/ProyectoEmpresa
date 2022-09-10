@@ -16,34 +16,31 @@ import lombok.Data;
 @Data
 public class Enterprise  {
 
-    public Enterprise() {
-    }
+    public Enterprise() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idEnt")
-    private Long id;
+    private long id;
 
-    @Column(name="name", unique = true, nullable= false)
+    @Column(name="name", unique = true)
     private String name;
 
-    @Column(name = "document", unique = true, nullable= false)
+    @Column(name = "document", unique = true)
     private String document;
 
-    @Column(name = "phone", nullable= true)
+    @Column(name = "phone")
     private String phone;
 
-    @Column(name="address", nullable= true)
+    @Column(name="address")
     private String address;
 
-    @OneToMany
-    @JoinColumn(name = "users", referencedColumnName="ident")
+    @OneToMany(mappedBy = "enterprise")
     private List<Employee> users;
     
-    @OneToMany
-    @JoinColumn(name = "transactions", referencedColumnName = "idEnt")
+    @OneToMany(mappedBy = "enterprise")
     private List<Transaction> transactions;
-
+    
     @Column(name="createdAt", updatable = false)
     @CreationTimestamp
     private LocalDate created;

@@ -10,8 +10,9 @@ import lombok.Data;
 @Entity
 @AllArgsConstructor
 @Data
-@Table(name="tb_profile")
+@Table(name="PROFILES")
 public class Profile {
+    
     public Profile(){}
     
     @Id
@@ -31,8 +32,7 @@ public class Profile {
     @Column(name = "image")
     private String image;
 
-    @OneToOne
-    @JoinColumn(name = "userp", referencedColumnName = "idEmp")
+    @OneToOne(mappedBy = "profile")
     private Employee user;
 
     

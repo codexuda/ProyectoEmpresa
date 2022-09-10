@@ -1,34 +1,32 @@
 package empresa.proyectoempresa.modelo;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.List; 
 
 import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
-//import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 @Entity
 @AllArgsConstructor
 @Data
 public class Employee {
 
-    public Employee() {
-    }
+    public Employee() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idEmp")
-    private Long id;
+    private long id;
     
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "profile", referencedColumnName = "idProf" )
     private Profile profile;
     
@@ -40,16 +38,15 @@ public class Employee {
     @JoinColumn(name = "enterprise", referencedColumnName = "idEnt")
     private Enterprise enterprise;
 
-    @OneToMany
-    @JoinColumn(name = "transactions", referencedColumnName = "idTran")
-    private List<Transaction> trasactions;
+    @OneToMany(mappedBy = "user")
+    private List<Transaction> transactions;
 
     @Column(name = "createdAt", nullable = true)
     @CreationTimestamp
     private LocalDate created;
 
     @Column(name = "updatedAt", nullable = true)
-    @CreationTimestamp
+    @UpdateTimestamp
     private LocalDate updated;
 
    
