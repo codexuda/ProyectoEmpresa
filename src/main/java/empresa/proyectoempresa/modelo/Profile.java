@@ -20,7 +20,7 @@ public class Profile {
     private long id;
 
     @Column(name = "phone", nullable = false)
-    private long phone;
+    private String phone;
 
     @Column(name = "created_at")
     private LocalDate created;
