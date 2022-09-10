@@ -30,8 +30,8 @@ public class TransactionController {
     
     //Consultar un transaccion por ID---"
     @GetMapping(value = "/{enterprise}/movements/{idTran}")
-    public Transaction transaccionesPorId(@PathVariable long idTran) {
-        return repository.findById(idTran).get();
+    public Transaction transaccionesPorId(@PathVariable long idtran) {
+        return repository.findById(idtran).get();
     }
 
     //Agregar transaccion-----POST
@@ -44,15 +44,15 @@ public class TransactionController {
     }
     //Eliminar transaccion----delete
     @DeleteMapping(value = "/{enterprise}/movements/{idTran}/delete")
-    public String eliminar(@PathVariable long idTran){
-        repository.delete(repository.findById(idTran).get());
+    public String eliminar(@PathVariable long idtran){
+        repository.delete(repository.findById(idtran).get());
         return "Eliminada con exito";
 
     }
     //Editar parcialmente ---- PATCH
     @PatchMapping(value = "/{enterprise}/movements/{idTran}/update" )
-    public Transaction actualizar(@PathVariable long idTran, @RequestBody Map<Object, Object> fields){
-        Transaction transaction=repository.findById(idTran).get();
+    public Transaction actualizar(@PathVariable long idtran, @RequestBody Map<Object, Object> fields){
+        Transaction transaction=repository.findById(idtran).get();
         fields.forEach((k,v)->{
             Field field= ReflectionUtils.findField(Transaction.class, (String) k);
             field.setAccessible(true);
