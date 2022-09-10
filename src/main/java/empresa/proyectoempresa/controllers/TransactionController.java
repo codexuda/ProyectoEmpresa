@@ -2,7 +2,7 @@ package empresa.proyectoempresa.controllers;
 
 import org.springframework.util.ReflectionUtils;
 
-import empresa.proyectoempresa.repositories.tbTransactionRepository;
+import empresa.proyectoempresa.repositories.TransactionRepository;
 import empresa.proyectoempresa.modelo.*;
 
 
@@ -17,26 +17,26 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/enterprises")
-public class tbTransactionController {
+public class TransactionController {
     //Ruta anterior: transactions   
     @Autowired
-    private tbTransactionRepository repository;
+    private TransactionRepository repository;
 
     //Listar todas las transacciones----GET
     @GetMapping(value = "/{enterprise}/movements")
-    public List<tbTransaction> transaccionesPorEmpresa(@PathVariable tbEnterprise enterprise) {
+    public List<Transaction> transaccionesPorEmpresa(@PathVariable Enterprise enterprise) {
         return repository.findByEnterpriseId(enterprise.getId());
     }
     
     //Consultar un transaccion por ID---"
     @GetMapping(value = "/{enterprise}/movements/{idTran}")
-    public tbTransaction transaccionesPorId(@PathVariable long idTran) {
+    public Transaction transaccionesPorId(@PathVariable long idTran) {
         return repository.findById(idTran).get();
     }
 
     //Agregar transaccion-----POST
     @PostMapping(value = "/{enterprise}/movements/add")
-     public tbTransaction create(@RequestBody tbTransaction transaction, @PathVariable tbEnterprise enterprise){
+     public Transaction create(@RequestBody Transaction transaction, @PathVariable Enterprise enterprise){
         transaction.setEnterprise(enterprise);
         transaction.setCreatedAt(LocalDate.now());
         transaction.setUpdatedAt(LocalDate.now()); 
@@ -51,10 +51,10 @@ public class tbTransactionController {
     }
     //Editar parcialmente ---- PATCH
     @PatchMapping(value = "/{enterprise}/movements/{idTran}/update" )
-    public tbTransaction actualizar(@PathVariable long idTran, @RequestBody Map<Object, Object> fields){
-        tbTransaction transaction=repository.findById(idTran).get();
+    public Transaction actualizar(@PathVariable long idTran, @RequestBody Map<Object, Object> fields){
+        Transaction transaction=repository.findById(idTran).get();
         fields.forEach((k,v)->{
-            Field field= ReflectionUtils.findField(tbTransaction.class, (String) k);
+            Field field= ReflectionUtils.findField(Transaction.class, (String) k);
             field.setAccessible(true);
             ReflectionUtils.setField(field, transaction, v);
         });

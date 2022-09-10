@@ -3,9 +3,9 @@ package empresa.proyectoempresa.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import empresa.proyectoempresa.modelo.tbEmployee;
+import empresa.proyectoempresa.modelo.Employee;
 
 @Repository 
-public interface tbEmployeeRepository extends JpaRepository<tbEmployee, Long> {
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     
 }

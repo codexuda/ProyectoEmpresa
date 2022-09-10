@@ -14,10 +14,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Data
 @Table(name="tbTransaction")
-public class tbTransaction {
+public class Transaction {
     //Cosntructor
 
-    public tbTransaction(){
+    public Transaction(){
 
     }
     
@@ -37,12 +37,12 @@ public class tbTransaction {
 
     //Foreing Key
     @ManyToOne
-    @JoinColumn(name="idEmp", referencedColumnName = "idEmp" )
-    private tbEmployee employee;
+    @JoinColumn(name="user", referencedColumnName = "idEmp" )
+    private Employee employee;
     //Foreing Key
     @ManyToOne
-    @JoinColumn(name="idEnt", referencedColumnName = "idEnt" )
-    private tbEnterprise enterprise;
+    @JoinColumn(name="enterprise", referencedColumnName = "idEnt" )
+    private Enterprise enterprise;
 
     @CreationTimestamp
     @Column(name="createdAt")

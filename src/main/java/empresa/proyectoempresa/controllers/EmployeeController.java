@@ -9,47 +9,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
-import empresa.proyectoempresa.modelo.tbEmployee;
-import empresa.proyectoempresa.repositories.tbEmployeeRepository;
+import empresa.proyectoempresa.modelo.Employee;
+import empresa.proyectoempresa.repositories.EmployeeRepository;
 
 @RestController
-@RequestMapping("/employee")
-public class tbEmployeeController {
+@RequestMapping("/users")
+public class EmployeeController {
     @Autowired
-    private tbEmployeeRepository repository;
+    private EmployeeRepository repository;
 
     // metodo listar toda la tabla
     @GetMapping(value = "")
-    public List<tbEmployee> listar() {
+    public List<Employee> listar() {
         return repository.findAll();
     }
 
     // metodo listar un elemento por id
     @GetMapping(value = "/{idemp}")
-    public tbEmployee obtener(@PathVariable long idemp) {
+    public Employee obtener(@PathVariable long idemp) {
         return repository.findById(idemp).get();
     }
 
     // metodo crear un registro
     @PostMapping(value = "/add")
-    public tbEmployee agregar(@RequestBody tbEmployee employee) {
+    public Employee agregar(@RequestBody Employee employee) {
         employee.setCreated(LocalDate.now());
         employee.setUpdated(LocalDate.now());
         return repository.save(employee);
     }
 
-    // metodo editar un registro con el metodo PUT
-    // @RequestMapping(value = "/modificar", method = RequestMethod.PUT)
-    // public tbEmployee actualizar(@RequestBody tbEmployee employee) {
-    // return repository.save(employee);
-    // }
-
     // metodo para editar registros con metodo PATCH
     @PatchMapping(value = "/{idemp}/update")
-    public tbEmployee actualizar(@PathVariable long idemp, @RequestBody Map<Object, Object> fields){
-        tbEmployee employee=repository.findById(idemp).get();
+    public Employee actualizar(@PathVariable long idemp, @RequestBody Map<Object, Object> fields){
+        Employee employee=repository.findById(idemp).get();
         fields.forEach((y,h)->{
-            Field field= ReflectionUtils.findField(clazz: tbEmployee.class, (String) y);
+            Field field= ReflectionUtils.findField(Employee.class, (String) y);
             field.setAccessible(true);
             ReflectionUtils.setField(field, employee, h);
         });

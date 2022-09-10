@@ -9,22 +9,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
-import empresa.proyectoempresa.modelo.tbEnterprise;
-import empresa.proyectoempresa.repositories.tbEnterpriseRepository;
+import empresa.proyectoempresa.modelo.Enterprise;
+import empresa.proyectoempresa.repositories.EnterpriseRepository;
 
 @RestController
 @RequestMapping("/enterprises")
-public class tbEnterpriseController {
+public class EnterpriseController {
     @Autowired
-    private tbEnterpriseRepository repository;
+    private EnterpriseRepository repository;
 
     @GetMapping(value = "")
-    public List<tbEnterprise> listar() {
+    public List<Enterprise> listar() {
         return repository.findAll();
     }
 
     @PostMapping(value = "/add")
-    public tbEnterprise agregar(@RequestBody tbEnterprise enterprise){
+    public Enterprise agregar(@RequestBody Enterprise enterprise){
         enterprise.setCreated(LocalDate.now());
         enterprise.setUpdated(LocalDate.now());
         return repository.save(enterprise);
@@ -33,17 +33,17 @@ public class tbEnterpriseController {
 
     //Por ID
     @GetMapping(value = "/{ident}")
-    public tbEnterprise obtener(@PathVariable long ident){
+    public Enterprise obtener(@PathVariable long ident){
         return repository.findById(ident).get();
     }
 
 
     //PATCH
     @PatchMapping(value = "/{ident}/update" )
-    public tbEnterprise actualizar(@PathVariable long ident, @RequestBody Map<Object, Object> fields){
-        tbEnterprise enterprise=repository.findById(ident).get();
+    public Enterprise actualizar(@PathVariable long ident, @RequestBody Map<Object, Object> fields){
+        Enterprise enterprise=repository.findById(ident).get();
         fields.forEach((k,v)->{
-            Field field= ReflectionUtils.findField(tbEnterprise.class, (String) k);
+            Field field= ReflectionUtils.findField(Enterprise.class, (String) k);
             field.setAccessible(true);
             ReflectionUtils.setField(field, enterprise, v);
         });

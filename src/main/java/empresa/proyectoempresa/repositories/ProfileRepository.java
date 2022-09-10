@@ -3,9 +3,9 @@ package empresa.proyectoempresa.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import empresa.proyectoempresa.modelo.tbProfile;
+import empresa.proyectoempresa.modelo.Profile;
 
 @Repository
-public interface tbProfileRepository extends JpaRepository <tbProfile,Long>{
+public interface ProfileRepository extends JpaRepository <Profile,Long>{
     
 }
