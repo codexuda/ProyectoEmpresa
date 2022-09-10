@@ -49,7 +49,7 @@ public class tbEmployeeController {
     public tbEmployee actualizar(@PathVariable long idemp, @RequestBody Map<Object, Object> fields){
         tbEmployee employee=repository.findById(idemp).get();
         fields.forEach((y,h)->{
-            Field field= ReflectionUtils.findField(clazz: tbEmployee.class, (String) y);
+            Field field= ReflectionUtils.findField(tbEmployee.class, (String) y);
             field.setAccessible(true);
             ReflectionUtils.setField(field, employee, h);
         });
