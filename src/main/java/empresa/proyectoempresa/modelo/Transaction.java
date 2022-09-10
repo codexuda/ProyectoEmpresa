@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 
 import org.hibernate.annotations.*;
 
+
 import lombok.*;
 import java.time.LocalDate;
 
@@ -32,7 +33,7 @@ public class Transaction {
 
     //Foreing Key
     @ManyToOne
-    @JoinColumn(name="employee", referencedColumnName = "idemp" )
+    @JoinColumn(name="user", referencedColumnName = "idemp" )
     private Employee user;
 
     //Foreing Key

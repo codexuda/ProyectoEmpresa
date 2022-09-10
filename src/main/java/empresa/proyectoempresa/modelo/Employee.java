@@ -1,11 +1,12 @@
 package empresa.proyectoempresa.modelo;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 
 import lombok.*;
 
@@ -36,14 +37,15 @@ public class Employee {
     @JoinColumn(name = "enterprise", referencedColumnName = "ident")
     private Enterprise enterprise;
 
-    @Column(name = "created_at", nullable = true)
     @CreationTimestamp
+    @Column(name = "created_at", nullable = true)
     private LocalDate created;
 
-    @Column(name = "updated_at", nullable = true)
     @UpdateTimestamp
+    @Column(name = "updated_at", nullable = true)
     private LocalDate updated;
 
-   
+    @OneToMany(mappedBy = "user")
+    private List<Transaction> transactions;
 
 }

@@ -1,6 +1,7 @@
 package empresa.proyectoempresa.modelo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -42,6 +43,11 @@ public class Enterprise  {
     @Column(name="updated_at")
     private LocalDate updated;
 
+    @OneToMany(mappedBy = "enterprise")
+    private List<Employee> users;
+
+    @OneToMany(mappedBy = "enterprise")
+    private List<Transaction> transactions;
     
 }
 
