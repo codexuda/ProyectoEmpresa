@@ -29,7 +29,7 @@ public class Transaction {
     private String concept;
 
     @Column(name="amount", nullable=true)
-    private Double amount;
+    private Float amount;
 
     //Foreing Key
     @ManyToOne
