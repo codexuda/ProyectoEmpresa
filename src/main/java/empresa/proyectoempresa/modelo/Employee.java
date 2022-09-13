@@ -12,28 +12,27 @@ import lombok.*;
 
 @Entity
 @AllArgsConstructor
-@Data
+@NoArgsConstructor
+@Getter
+@Setter
 public class Employee {
-
-    public Employee() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idemp")
+    @Column(name = "idemp", nullable = false)
     private long id;
     
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
     @OneToOne
-    @JoinColumn(name = "profile", referencedColumnName = "idprof" )
     private Profile profile;
     
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @Column(name ="roleName")
     private Enum_RoleName rol;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "enterprise", referencedColumnName = "ident")
     private Enterprise enterprise;
 
