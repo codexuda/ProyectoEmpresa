@@ -42,8 +42,6 @@ public class tbTransactionController {
         repositiorio.delete(tbtransaction);
         return "Eliminada con exito";
     }
-
-
-    
+      
 
 }
