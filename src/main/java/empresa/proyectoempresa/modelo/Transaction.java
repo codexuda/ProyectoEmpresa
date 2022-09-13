@@ -42,7 +42,7 @@ public class Transaction {
     private Enterprise enterprise;
 
     @CreationTimestamp
-    @Column(name="create_at", updatable = false)
+    @Column(name="created_at", updatable = false)
     private LocalDate created;
 
     @UpdateTimestamp
