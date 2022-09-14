@@ -2,7 +2,7 @@ package empresa.proyectoempresa.modelo;
 
 import javax.persistence.*;
 
-@Table(name = "idrole")
+@Table(name = "roleName")
 public enum tbenumrolename {
     ADMIN, 
     OPERARIO

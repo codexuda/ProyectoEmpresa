@@ -4,19 +4,28 @@ import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import empresa.proyectoempresa.modelo.tbEmployee;
+import empresa.proyectoempresa.modelo.tbEnterprise;
+import empresa.proyectoempresa.modelo.tbProfile;
 import empresa.proyectoempresa.repositories.tbEmployeeRepository;
+import empresa.proyectoempresa.repositories.tbEnterpriseRepository;
+import empresa.proyectoempresa.repositories.tbProfileRepository;
 
 @RestController
 @RequestMapping("/employee")
 public class tbEmployeeController {
     @Autowired
     private tbEmployeeRepository repository;
+    @Autowired
+    private tbEnterpriseRepository entRepo;
+    @Autowired
+    private tbProfileRepository profRepo;
 
     // metodo listar toda la tabla
     @GetMapping(value = "")
@@ -33,6 +42,16 @@ public class tbEmployeeController {
     // metodo crear un registro
     @PostMapping(value = "/add")
     public tbEmployee agregar(@RequestBody tbEmployee employee) {
+        // Empresa por id
+        Optional<tbEnterprise> optEnterprise =entRepo.findById(employee.getEnterprise().getId());
+        tbEnterprise enterprise= optEnterprise.get();
+        employee.setEnterprise(enterprise);
+
+        // Perfil por id
+        Optional<tbProfile> optProfile =profRepo.findById(employee.getProfile().getId());
+        tbProfile profile= optProfile.get();
+        employee.setProfile(profile);
+
         employee.setCreated(LocalDate.now());
         employee.setUpdated(LocalDate.now());
         return repository.save(employee);

@@ -1,6 +1,7 @@
 package empresa.proyectoempresa.modelo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -13,6 +14,7 @@ import lombok.Data;
 @Entity
 @AllArgsConstructor
 @Data
+@Table(name = "Enterprise")
 public class tbEnterprise  {
 
     public tbEnterprise() {
@@ -23,22 +25,31 @@ public class tbEnterprise  {
     @Column(name = "ident")
     private Long id;
 
-    @Column(name="nameenterprise")
+    @Column(name="name")
     private String name;
 
     @Column(name="address")
     private String address;
 
-    @Column(name = "phone")
-    private int phone;
+    @Column(name = "document")
+    private String document;
 
-    @Column(name="createdat", updatable = false)
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name="createdAt", updatable = false)
     @CreationTimestamp
     private LocalDate created;
     
     @UpdateTimestamp
-    @Column(name="updatedat")
+    @Column(name="updatedAt")
     private LocalDate updated;
+
+    @OneToMany(mappedBy = "enterprise")
+    private List<tbTransaction> transactions;
+
+    @OneToMany(mappedBy = "enterprise")
+    private List<tbEmployee> employees;
 
     
 }

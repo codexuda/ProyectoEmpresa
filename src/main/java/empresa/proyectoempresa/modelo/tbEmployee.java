@@ -1,6 +1,8 @@
 package empresa.proyectoempresa.modelo;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -13,6 +15,7 @@ import lombok.Data;
 @Entity
 @AllArgsConstructor
 @Data
+@Table(name = "Employee")
 public class tbEmployee {
 
     public tbEmployee() {
@@ -26,7 +29,7 @@ public class tbEmployee {
     @Column(name = "email", length = 100, unique = true)
     private String email;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "idprof", referencedColumnName = "idprof" )
     private tbProfile profile;
     
@@ -38,14 +41,15 @@ public class tbEmployee {
     @JoinColumn(name = "ident", referencedColumnName = "ident")
     private tbEnterprise enterprise;
 
-    @Column(name = "createdate", nullable = true)
+    @Column(name = "createdAt", nullable = true)
     @CreationTimestamp
     private LocalDate created;
 
-    @Column(name = "updatedate", nullable = true)
+    @Column(name = "updatedAt", nullable = true)
     @CreationTimestamp
     private LocalDate updated;
 
-   
+    @OneToMany(mappedBy = "employee")
+    private List<tbTransaction> transactions;
 
 }

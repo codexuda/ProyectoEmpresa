@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Entity
 @AllArgsConstructor
 @Data
-@Table(name="tbTransaction")
+@Table(name="Transaction")
 public class tbTransaction {
     //Cosntructor
 
@@ -46,11 +46,11 @@ public class tbTransaction {
 
     @CreationTimestamp
     @Column(name="createdAt")
-    private LocalDate createdAt;
+    private LocalDate created;
 
     @UpdateTimestamp
     @Column(name="updatedAt")
-    private LocalDate updatedAt;
+    private LocalDate updated;
   
 
 }
