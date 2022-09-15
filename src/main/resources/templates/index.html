@@ -43,8 +43,8 @@
 
     <!--Llenamos la tabla dibujada-->
     <!--En nuestro controller, creamos en viewtransaccion un modelo con un atributo llamado emplist donde esta guardada la lista de todas las transaccions-->
-    <tr th:each="transaccion : ${listTrasanccion}">
-        <td th:text="${transaccion.createdAt}"></td>
+    <tr th:each="transaccion : ${ViewlistTransaccion}">
+        <th scope= "row" th:text="${transaccion.idtran}"></th>
         <td th:text="${transaccion.createdAt}"></td>
         <td th:text="${transaccion.amount}"></td>
         <td th:text="${transaccion.concept}"></td>

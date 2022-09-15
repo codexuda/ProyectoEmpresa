@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import empresa.proyectoempresa.modelo.tbTransaction;
+import empresa.proyectoempresa.modelo.*;
 import empresa.proyectoempresa.services.tbTransactionService;
+
+
 
 import java.util.List;
 
@@ -22,23 +24,11 @@ public class FrontController {
         return "index";
     }
 
-    // Listar todas las transacciones----GET
-    // @RequestMapping({"/","/list"})
-    // @RequestMapping(value = "/list", method = RequestMethod.GET)
-    // public String viwTrasanccioneString(Model modelo, @ModelAttribute("mensaje")
-    // String Mensaje) {
-    // List<tbTransaction> listTrasanccion =
-    // tbtransactionService.getAllTransaction();
-    // modelo.addAttribute("listarTransaccion",listTrasanccion);
-    // modelo.addAttribute("Mensaje", Mensaje);
-    // return "index";
-
-    // }
-
-    @RequestMapping(value = "/listTrasanccion", method = RequestMethod.GET)
-    public String listTrasanccion(Model model) {
-        List<tbTransaction> listTrasanccion = this.tbtransactionService.getAllTransaction();
-        model.addAttribute("listTrasanccion", listTrasanccion);
+    //Controlador que conecta con la View
+    @RequestMapping(value = "/ListTransaccion", method = RequestMethod.GET)
+    public String ViewlistTransaccion(Model model) {
+        List<tbTransaction> ViewlistTransaccion = this.tbtransactionService.getAllTransaction();
+        model.addAttribute("ViewlistTransaccion", ViewlistTransaccion);
         return "index";
 
     }

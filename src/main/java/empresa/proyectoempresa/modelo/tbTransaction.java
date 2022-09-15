@@ -13,7 +13,7 @@ public class tbTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idtran")
-    private Long idtran;
+    private Integer idtran;
 
  
     @Column(name = "concept", length = 100)
@@ -44,7 +44,7 @@ public class tbTransaction {
     
      //Cosntructor
                                                                     //Double idemp,Double idEnt,                                     
-    public tbTransaction(Long idtran, String concept, Double amount, Date createdAt,Date updatedAt) {
+    public tbTransaction(Integer idtran, String concept, Double amount, Date createdAt,Date updatedAt) {
         this.idtran = idtran;
         this.concept = concept;
         this.amount = amount;
@@ -53,22 +53,18 @@ public class tbTransaction {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-    
+   
+    public tbTransaction() {
+    }
+
     //Getters and Setters
-    public tbTransaction() {}
-
-    public Long getidtran() {
-        return idtran;
-    }
-
-    public void setidtran(Long idtran) {
-        this.idtran = idtran;
-    }
+   
 
     public String getConcept() {
         return concept;
     }
 
+   
     public void setConcept(String concept) {
         this.concept = concept;
     }
@@ -111,6 +107,14 @@ public class tbTransaction {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Integer getIdtran() {
+        return idtran;
+    }
+
+    public void setIdtran(Integer idtran) {
+        this.idtran = idtran;
     }
     
 
