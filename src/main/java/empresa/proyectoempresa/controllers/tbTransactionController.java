@@ -2,23 +2,32 @@ package empresa.proyectoempresa.controllers;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
 import empresa.proyectoempresa.repositories.tbTransactionRepository;
+import empresa.proyectoempresa.services.tbTransactionService;
 import empresa.proyectoempresa.modelo.*;
 
+
+
 @RestController
-@RequestMapping("/transactions")
+@RequestMapping("/")
 public class tbTransactionController {
 
     @Autowired
     private tbTransactionRepository repositiorio;
 
-    //Listar todas las transacciones----GET
-    @RequestMapping(value = "/listartransacciones", method = RequestMethod.GET)
-    public List<tbTransaction> listarTransaccion() {
-        return repositiorio.findAll();
 
-    }
     //Consultar un transaccion por ID---"PATCH"
     @RequestMapping(value = "/buscartransaccion/{idtran}", method = RequestMethod.GET)
     public tbTransaction buscartransaccion(@PathVariable long idtran) {
