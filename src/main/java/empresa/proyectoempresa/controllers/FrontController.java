@@ -1,14 +1,12 @@
 package empresa.proyectoempresa.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.*;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import empresa.proyectoempresa.modelo.*;
 import empresa.proyectoempresa.services.tbEmployeeService;
-import org.thymeleaf.engine.AttributeName;
 import java.util.*;
-import antlr.collections.List;
 
 @Controller
 @RequestMapping("/")
