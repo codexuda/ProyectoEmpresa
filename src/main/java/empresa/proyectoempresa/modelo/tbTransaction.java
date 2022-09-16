@@ -6,13 +6,16 @@ import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
 import java.time.LocalDate;
 
 @Entity
-@AllArgsConstructor
 @Data
+@AllArgsConstructor
 @Table(name="Transaction")
 public class tbTransaction {
     //Cosntructor
@@ -41,6 +44,7 @@ public class tbTransaction {
     private tbEmployee employee;
     //Foreing Key
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name="idEnt", referencedColumnName = "idEnt" )
     private tbEnterprise enterprise;
 

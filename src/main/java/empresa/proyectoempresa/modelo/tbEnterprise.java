@@ -8,6 +8,8 @@ import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -44,10 +46,11 @@ public class tbEnterprise  {
     @UpdateTimestamp
     @Column(name="updatedAt")
     private LocalDate updated;
-
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "enterprise")
     private List<tbTransaction> transactions;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "enterprise")
     private List<tbEmployee> employees;
 

@@ -18,7 +18,7 @@ import empresa.proyectoempresa.repositories.tbEnterpriseRepository;
 import empresa.proyectoempresa.repositories.tbProfileRepository;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/user")
 public class tbEmployeeController {
     @Autowired
     private tbEmployeeRepository repository;
@@ -42,16 +42,15 @@ public class tbEmployeeController {
     // metodo crear un registro
     @PostMapping(value = "/add")
     public tbEmployee agregar(@RequestBody tbEmployee employee) {
-        // Empresa por id
-        Optional<tbEnterprise> optEnterprise =entRepo.findById(employee.getEnterprise().getId());
-        tbEnterprise enterprise= optEnterprise.get();
-        employee.setEnterprise(enterprise);
-
         // Perfil por id
-        Optional<tbProfile> optProfile =profRepo.findById(employee.getProfile().getId());
-        tbProfile profile= optProfile.get();
-        employee.setProfile(profile);
+        Optional<tbProfile> optProfile = profRepo.findById(employee.getProfile().getId());
+        tbProfile profile = optProfile.get();
 
+        // Empresa por id
+        Optional<tbEnterprise> optEnterprise = entRepo.findById(employee.getEnterprise().getId());
+        tbEnterprise enterprise = optEnterprise.get();
+        employee.setEnterprise(enterprise);
+        employee.setProfile(profile);
         employee.setCreated(LocalDate.now());
         employee.setUpdated(LocalDate.now());
         return repository.save(employee);
@@ -65,10 +64,10 @@ public class tbEmployeeController {
 
     // metodo para editar registros con metodo PATCH
     @PatchMapping(value = "/{idemp}/update")
-    public tbEmployee actualizar(@PathVariable long idemp, @RequestBody Map<Object, Object> fields){
-        tbEmployee employee=repository.findById(idemp).get();
-        fields.forEach((y,h)->{
-            Field field= ReflectionUtils.findField(tbEmployee.class, (String) y);
+    public tbEmployee actualizar(@PathVariable long idemp, @RequestBody Map<Object, Object> fields) {
+        tbEmployee employee = repository.findById(idemp).get();
+        fields.forEach((y, h) -> {
+            Field field = ReflectionUtils.findField(tbEmployee.class, (String) y);
             field.setAccessible(true);
             ReflectionUtils.setField(field, employee, h);
         });

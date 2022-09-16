@@ -6,19 +6,25 @@ import java.util.List;
 import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
-//import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Entity
-@AllArgsConstructor
 @Data
 @Table(name = "Employee")
 public class tbEmployee {
 
     public tbEmployee() {
+    }
+
+    public tbEmployee(String email,tbProfile profile, EnumRole rol, tbEnterprise enterprise) {
+        this.email=email;
+        this.enterprise=enterprise;
+        this.profile=profile;
+        this.rol=rol;
     }
 
     @Id
@@ -34,8 +40,8 @@ public class tbEmployee {
     private tbProfile profile;
     
     @Enumerated(EnumType.STRING)
-    @Column(name ="idrole")
-    private tbenumrolename rol;
+    @Column(name ="rol")
+    private EnumRole rol;
 
     @ManyToOne
     @JoinColumn(name = "ident", referencedColumnName = "ident")
@@ -46,9 +52,10 @@ public class tbEmployee {
     private LocalDate created;
 
     @Column(name = "updatedAt", nullable = true)
-    @CreationTimestamp
+    @UpdateTimestamp
     private LocalDate updated;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "employee")
     private List<tbTransaction> transactions;
 

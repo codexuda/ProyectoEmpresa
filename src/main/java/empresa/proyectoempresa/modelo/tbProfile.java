@@ -7,6 +7,8 @@ import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -36,6 +38,7 @@ public class tbProfile {
     @Column(name = "image")
     private String image;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "profile")
     private tbEmployee employee;
     
