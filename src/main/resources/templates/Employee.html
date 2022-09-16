@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+
+<body>
+
+    <!--Código de bootstrap para crear la tabla-->
+    <table class="table">
+        <thead>
+            <tr>
+                <!-- <th scope="idemp">#</th> -->
+                <th scope="email">First</th>
+                <th scope="idprof">Last</th>
+                <th scope="idrole">Handle</th>
+                <th scope="ident">Handle</th>
+                <th scope="created">Handle</th>
+                <th scope="updated">Handle</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="employee : ${employee}">
+                <th scope="row" th:text="${employee.idemp}"></th>
+                <td th:text="${employee.email}"></td>
+                <td th:text="${employee.idprof}"></td>
+                <td th:text="${employee.idrole}"></td>
+                <td th:text="${employee.ident}"></td>
+                <td th:text="${employee.created}"></td>
+                <td th:text="${employee.updated}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- este es el link de bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

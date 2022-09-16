@@ -26,4 +26,8 @@ public class tbEmployeeService {
       // return listarTransaccion;
 
    }
+
+public List<Employee> getAllEmployee() {
+    return null;
+}
 }
