@@ -15,9 +15,8 @@ import lombok.Data;
 @Data
 public class tbEmployee {
 
-    public tbEmployee() {
-    }
-
+//Atributos
+    //campo llave primaria
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idemp")
@@ -46,6 +45,10 @@ public class tbEmployee {
     @CreationTimestamp
     private LocalDate updated;
 
-   
+ // constructor
+    
+public tbEmployee() {
+}
+
 
 }
