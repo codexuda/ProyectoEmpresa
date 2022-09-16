@@ -18,7 +18,7 @@ public class tbEmployeeService {
    @Autowired
    private tbEmployeeRepository tbEmployeeRepository;
 
-   public List<tbEmployee> getAllTransaction() {
+   public List<tbEmployee> getAllEmployees() {
       return (List<tbEmployee>) this.tbEmployeeRepository.findAll();
       // List<tbTransaction> listarTransaccion = new ArrayList<>();
       // TbTransactionRepository.findAll().forEach(trasanccion ->
@@ -27,7 +27,7 @@ public class tbEmployeeService {
 
    }
 
-public List<Employee> getAllEmployee() {
+public List<tbEmployee> getAllEmployee() {
     return null;
 }
 }
