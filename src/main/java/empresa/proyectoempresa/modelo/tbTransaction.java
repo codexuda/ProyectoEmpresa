@@ -29,7 +29,7 @@ public class tbTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idTran")
-    private Long id;
+    public Long id;
 
  
     @Column(name = "concept", nullable = true, length = 100)
