@@ -2,6 +2,7 @@ package empresa.proyectoempresa.controllers;
 
 import org.springframework.util.ReflectionUtils;
 
+import empresa.proyectoempresa.repositories.tbEmployeeRepository;
 import empresa.proyectoempresa.repositories.tbTransactionRepository;
 import empresa.proyectoempresa.modelo.*;
 
@@ -13,6 +14,7 @@ import java.util.List;
 import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.util.Map;
+import java.util.Optional;
 
 
 @RestController
@@ -21,6 +23,10 @@ public class tbTransactionController {
     //Ruta anterior: transactions   
     @Autowired
     private tbTransactionRepository repository;
+
+    @Autowired
+    private tbEmployeeRepository empRepo;
+
 
     //Listar todas las transacciones----GET
     @GetMapping(value = "/{enterprise}/movements")
@@ -37,6 +43,12 @@ public class tbTransactionController {
     //Agregar transaccion-----POST
     @PostMapping(value = "/{enterprise}/movements/add")
      public tbTransaction create(@RequestBody tbTransaction transaction, @PathVariable tbEnterprise enterprise){
+        
+        // User por id
+        Optional<tbEmployee> optEmployee = empRepo.findById(transaction.getEmployee().getId());
+        tbEmployee employee = optEmployee.get();
+        transaction.setEmployee(employee);
+        
         transaction.setEnterprise(enterprise);
         transaction.setCreated(LocalDate.now());
         transaction.setUpdated(LocalDate.now()); 
