@@ -55,6 +55,8 @@ public class tbTransaction {
     @UpdateTimestamp
     @Column(name="updatedAt")
     private LocalDate updated;
+
+
   
 
 }

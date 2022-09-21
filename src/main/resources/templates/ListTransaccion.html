@@ -44,19 +44,20 @@
     <!--Llenamos la tabla dibujada-->
     <!--En nuestro controller, creamos en viewtransaccion un modelo con un atributo llamado emplist donde esta guardada la lista de todas las transaccions-->
     <tr th:each="transaccion : ${ViewlistTransaccion}">
-        <th scope= "row" th:text="${transaccion.idtran}"></th>
-        <td th:text="${transaccion.createdAt}"></td>
+        <th scope= "row" th:text="${transaccion.id}"></th>
+        <td th:text="${transaccion.created}"></td>
         <td th:text="${transaccion.amount}"></td>
         <td th:text="${transaccion.concept}"></td>
-        <td th:text="${transaccion.updatedAt}"></td>
-        <td><button type="button" class="btn btn-warning"><a th:href="@{/update/{idtran}(idtran=${transaccion.idtran})}">Editar</a></button></td>
-        <td><button type="button" class="btn btn-danger"><a th:href="@{/update/{idtran}(idtran=${transaccion.idtran})}">Eliminar</a></button></td>
+        <td th:text="${transaccion.updated}"></td>
+        <td><button type="button" class="btn btn-warning"><a th:href="@{/update/{idtran}(idtran=${transaccion.id})}">Editar</a></button></td>
+        <td><button type="button" class="btn btn-danger"><a th:href="@{/update/{idtran}(idtran=${transaccion.id})}">Eliminar</a></button></td>
 
     </tr>
 </table>
 
     <!-- vamos a crear un boton que sirva para agregar nuevas transaccions -->
     <button type="button" class="btn btn-info"><a th:href="@{/add}">Agregar Nueva transaccion</a></button>
+    <button type="button" class="btn btn-info"><a th:href="@{/}">Regresar</a></button>
     <br><br>
 
 </div>

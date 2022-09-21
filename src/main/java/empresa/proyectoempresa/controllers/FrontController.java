@@ -6,7 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-import empresa.proyectoempresa.modelo.*;
+
+import empresa.proyectoempresa.modelo.tbTransaction;
 import empresa.proyectoempresa.services.tbTransactionService;
 
 
@@ -26,10 +27,10 @@ public class FrontController {
     }
 
     //Controlador que conecta con la View
-    //@RequestMapping(value = "/{enterprise}/movements", method = RequestMethod.GET)
-    //public String ViewlistTransaccion(Model model) {
-      // List<tbTransaction> ViewlistTransaccion = this.tbtransactionService.listarTransaccion();
-        //model.addAttribute("ViewlistTransaccion", ViewlistTransaccion);
-        //return "ListTransaccion";
-    //}
+    @RequestMapping(value = "/movimientos", method = RequestMethod.GET)
+    public String ViewlistTransaccion(Model model) {
+       List<tbTransaction> ViewlistTransaccion = this.tbtransactionService.listarTransaccion();
+        model.addAttribute("ViewlistTransaccion", ViewlistTransaccion);
+        return "ListTransaccion";
+    }
 }
