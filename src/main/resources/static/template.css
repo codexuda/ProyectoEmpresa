@@ -1,5 +1,6 @@
-.body {
-    background-color: black;
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 8px;
 }
 
 .sidebar {
@@ -7,7 +8,7 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     height: 100%;
     position: fixed;
-    width: 300px;
+    width: 200px;
     background: black;
     text-align: center;
     top: 0px;
@@ -17,29 +18,29 @@
 .logo {
     margin-top: 120px;
     position: fixed;
-    width: 300px;
+    width: 200px;
     text-align: center;
 }
 
 .logo img {
-    max-width: 100px;
+    max-width: 70px;
 }
 
 .navigation {
-    width: 300px;
-    margin-top: 260px;
+    width: 200px;
+    margin-top: 200px;
     text-align: center;
 }
 
 .navigation a:link,
 a:visited {
-    width: 200px;
+    width: 100px;
     margin-top: 3px;
     color: #40b988;
     background-color: black;
     padding: 5px;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 8px;
     display: inline-block;
     text-decoration: none;
 }
@@ -57,11 +58,16 @@ a:visited {
     border: 1px solid black;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: black;
-    margin-left: 350px;
+    font-size: 8px;
+    margin-left: 220px;
     margin-right: 20px;
     margin-top: 20px;
     margin-bottom: 50px;
     padding: 20px;
+}
+
+h1 {
+    font-size: 20px;
 }
 
 
@@ -73,7 +79,7 @@ a:visited {
     right: 10px;
     padding: 5px;
     z-index: 1000000;
-    font-size: 10px;
+    font-size: 7px;
     color: black;
     position: fixed;
     text-align: center;
@@ -86,6 +92,31 @@ a:visited {
     color: #40b988;
     background-color: black;
     border: 1px solid #40b988;    
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+
+.bttn {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #40b988;
+    border-radius: 3px;
+    background-color: black;
+    padding: 2px;
+    text-transform: uppercase;
+    font-size: 10px;
+    text-decoration: none;
+}
+
+.bttn a:visited, a:link{
+    color: #40b988;
+    text-decoration: none;
+}
+
+.bttn:hover {
+    background-color: white;
+    color: black;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
