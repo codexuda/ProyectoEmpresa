@@ -38,17 +38,17 @@ public class FrontController {
     @RequestMapping("/")
     public class FrontController {
         @Autowired
-        tbEmployeeService tbEmployeeService;
+        private tbEmployeeService tbEmployeeService;
 
         @RequestMapping(value = "/", method = RequestMethod.GET)
         public String index() {
             return "index";
         }
 
-        // metodo para listar empleados en el front end
+        // metodo para listar empleados en el front end, llamando el metodo desde el controlador
         @RequestMapping(value = "/employee", method = RequestMethod.GET)
         public String employee(Model model) {
-            List<tbEmployee> employee = this.tbEmployeeService.getAllEmployees();
+            List<tbEmployee> employee = this.tbEmployeeController.listar();
             model.addAttribute("employee", employee);
             return "Employee";
         }
