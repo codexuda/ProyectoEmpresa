@@ -13,11 +13,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class tbEmployeeService {
 
+//metodo
    @Autowired
    private tbEmployeeRepository tbEmployeeRepository;
 
    public List<tbEmployee> getAllEmployees() {
       return (List<tbEmployee>) this.tbEmployeeRepository.findAll();
    }
+
+//metodo
 
 }
