@@ -20,7 +20,4 @@ public class tbEmployeeService {
       return (List<tbEmployee>) this.tbEmployeeRepository.findAll();
    }
 
-public List<tbEmployee> getAllEmployee() {
-    return null;
-}
 }
