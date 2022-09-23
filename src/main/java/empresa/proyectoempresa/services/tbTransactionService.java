@@ -20,4 +20,8 @@ public class tbTransactionService {
         return (ArrayList<tbTransaction>) TbTransactionRepository.findAll();
 
    }
+
+   public tbTransaction createTransaction(tbTransaction tbtransaction) {
+      return this.TbTransactionRepository.save(tbtransaction);
+   }
 }

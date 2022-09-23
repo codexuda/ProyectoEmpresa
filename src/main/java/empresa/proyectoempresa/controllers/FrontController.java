@@ -33,4 +33,19 @@ public class FrontController {
         model.addAttribute("ViewlistTransaccion", ViewlistTransaccion);
         return "ListTransaccion";
     }
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String add(@ModelAttribute tbTransaction tbtransaction, Model model){
+        System.out.println(tbtransaction);
+        model.addAttribute("tbtransaction", new tbTransaction());
+        return "AgregarTransaccion";
+    }
+
+
+        @RequestMapping(value = "/add", method = RequestMethod.POST)
+        public String addTransaction(@ModelAttribute tbTransaction tbtransaction, Model model){
+            System.out.println(tbtransaction);
+            this.tbtransactionService.createTransaction(tbtransaction);
+            return "redirect:/movimientos";
+    }
 }
