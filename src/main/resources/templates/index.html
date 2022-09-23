@@ -13,33 +13,24 @@
     <script src="https://kit.fontawesome.com/f077be3e7d.js" crossorigin="anonymous"></script>
 
     <title>.::CodeX::.</title>
-    
+
 </head>
 
 <body>
-    <div class="container vh-100 d-flex flex-column justify-content-center align-items-center">
-        <h1 class="py-5 px-3 text-center"> MENU </h1>
-        <!--Dibujamos la tabla-->
-        <br>
-        <table class="table table-bordered">
-          
-            <tr><td><center><button type="button" class="btn btn-info"><a th:href="@{/movimientos}" class="btn btn-primary mb-3">Consultar ingreso y  egresos</a></button></center></td></tr>
-            <tr><td><center><button type="button" class="btn btn-info"><a th:href="@{/user}" class="btn btn-primary mb-3">Usuarios</a></button></center></td></tr>  
-            <tr><td><center><button type="button" class="btn btn-info"><a th:href="@{/empresas}" class="btn btn-primary mb-3">Empresas</a></button></center></td></tr> 
-        
-     
-        </table>
+    <div class="index">
+    
+        <div class="hlogo"><img th:src="@{/logo.jpg}"></div>
+        <br> Bienvenido
+
+        <div class="bttn" style="margin-top: 5px; padding: 5px;"><a th:href="@{/movimientos}"><i
+                    class="fa-solid fa-dollar-sign"></i> &nbsp; &nbsp; Consultar transacciones</a></div>
+        <div class="bttn" style="margin-top: 5px; padding: 5px"><a th:href="@{/usuarios}"><i
+                    class="fa-solid fa-users"></i> &nbsp; &nbsp; Consultar empleados</a></div>
+        <div class="bttn" style="margin-top: 5px; padding: 5px"><a th:href="@{/empresas}"><i
+                    class="fa-solid fa-building"></i> &nbsp; &nbsp; Consultar empresas</a></div>
 
 
     </div>
-
-    <!--este bloque es el boton Listar Empleado-->
-    <div class="container vh-100 d-flex flex-column justify-content-center align-items-center">
-        <h1 class="py-5 px-3 text-center">Listar Empleados</h1>
-        <a th:href="@{/employee}" class="btn btn-primary mb-3"> Ver Lista de Empleados</a>
-        <a th:href ="@{/add}" class="btn btn-primary mb-3"> Crear un Empleado</a>
-    </div>
-    <!--fin Listar Empleado-->
 
     <div class="credit"><a href="https://github.com/codexuda" target="_blank"><i class="fa-solid fa-code"></i></a>
     </div>

@@ -70,7 +70,7 @@ a:visited {
     overflow-y: scroll;
 }
 
-.tophead{
+.tophead {
     width: 70%;
     position: static;
     background-color: white;
@@ -80,7 +80,7 @@ a:visited {
     margin-top: 20px;
 }
 
-.thbuttons{
+.thbuttons {
     text-align: right;
 }
 
@@ -113,7 +113,7 @@ h1 {
 .credit a:hover {
     color: #40b988;
     background-color: black;
-    border: 1px solid #40b988;    
+    border: 1px solid #40b988;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
@@ -132,18 +132,40 @@ h1 {
     text-decoration: none;
 }
 
-.bttn i{
+.bttn i {
     font-size: 10px;
 }
 
-.bttn a:visited, a:link{
+.bttn a:visited,
+a:link {
     color: #40b988;
     text-decoration: none;
 }
 
-.bttn, .bttn a:hover {
+.bttn,
+.bttn a:hover {
     color: white;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
+}
+
+.index {
+    border: 1px solid black;
+    width: 50%;
+    vertical-align: middle;
+    margin: 0px auto;
+    padding: 20px;
+    text-align: center;
+    margin:10% auto;
+}
+
+
+
+
+.hlogo img {
+    max-width: 70px;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #40b988;
 }
