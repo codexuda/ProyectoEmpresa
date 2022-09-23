@@ -40,7 +40,7 @@ public class FrontController {
     public String listEmployee(Model model) {
         List<tbEmployee> listEmployee = this.tbEmployeeService.getAllEmployees();
         model.addAttribute("listEmployee", listEmployee);
-        return "Employee";
+        return "ListEmployee";
     }
     // fin bloque listar empleado
 
