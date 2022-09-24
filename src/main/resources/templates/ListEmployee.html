@@ -14,13 +14,13 @@
     <table class="table">
         <thead>
             <tr>
-                <!-- <th scope="idemp">#</th> -->
-                <th scope="email">First</th>
-                <th scope="idprof">Last</th>
-                <th scope="idrole">Handle</th>
-                <th scope="ident">Handle</th>
-                <th scope="created">Handle</th>
-                <th scope="updated">Handle</th>
+                <th scope="id">#</th>
+                <th scope="email">Email</th>
+                <th scope="profile">Perfil</th>
+                <th scope="rol">Rol</th>
+                <th scope="enterprise">Empresa</th>
+                <th scope="created">Creada</th>
+                <th scope="updated">Actualizado</th>
 
             </tr>
         </thead>
@@ -28,9 +28,9 @@
             <tr th:each="employee : ${listEmployee}">
                 <th scope="row" th:text="${employee.id}"></th>
                 <td th:text="${employee.email}"></td>
-                <td th:text="${employee.idprof}"></td>
-                <td th:text="${employee.idrole}"></td>
-                <td th:text="${employee.ident}"></td>
+                <td th:text="${employee.profile.id}"></td>
+                <td th:text="${employee.rol}"></td>
+                <td th:text="${employee.enterprise.name}"></td>
                 <td th:text="${employee.created}"></td>
                 <td th:text="${employee.updated}"></td>
             </tr>

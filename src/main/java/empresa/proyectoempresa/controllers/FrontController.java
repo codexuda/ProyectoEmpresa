@@ -35,7 +35,7 @@ public class FrontController {
         return "ListTransactions";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/movimientos/add", method = RequestMethod.GET)
     public String add(@ModelAttribute tbTransaction tbtransaction, Model model){
         System.out.println(tbtransaction);
         model.addAttribute("tbtransaction", new tbTransaction());
@@ -43,7 +43,7 @@ public class FrontController {
     }
 
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/movimientos/add", method = RequestMethod.POST)
     public String addTransaction(@ModelAttribute tbTransaction tbtransaction, Model model){
         System.out.println(tbtransaction);
         this.tbtransactionService.createTransaction(tbtransaction);
@@ -68,14 +68,14 @@ public class FrontController {
 
     //Bloque para agregar empleado
 
-        @RequestMapping(value = "/usiarios/add", method = RequestMethod.GET)
+        @RequestMapping(value = "/usuarios/add", method = RequestMethod.GET)
         public String add(@ModelAttribute tbEmployee tbemployee, Model model){
         System.out.println(tbemployee);
         model.addAttribute("tbemployee", new tbEmployee());
         return "AddEmployee";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/usuarios/add", method = RequestMethod.POST)
     public String addEmployee(@ModelAttribute tbEmployee employee, Model model){
         this.employeeService.agregarUsuario(employee);
         return "redirect:/empleados";

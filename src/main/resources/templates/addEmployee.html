@@ -12,7 +12,7 @@
     <main class="vh-100 d-flex justify-content-center align-items-center">
 
         <form class="d-flex justify-content-center mb-3"
-        th:action="@{/add}" method="post" th:object="${employee}"  
+        th:action="@{/add}" method="post" th:object="${tbemployee}"  
         
         >
             <div> class="w-30"
@@ -23,31 +23,23 @@
 
                 <div class="mb-3">
                     <label for="Idprof" class="form-label">idprof:</label>
-                    <input th:field="*{idprof}" type="number" class="form-control" id="Idprof">
+                    <input th:field="*{profile}" type="number" class="form-control" id="profile">
                 </div>
 
                 <div class="mb-3">
                     <label for="Rol" class="form-label">rol:</label>
                     <input th:field="*{rol}" type="email" class="form-control" id="Rol">
                 </div>
-
-            </div>
-            <div> class="w-30"
                 <div class="mb-3">
                     <label for="Ident" class="form-label">ident:</label>
-                    <input th:field="*{ident}" type="number" class="form-control" id="Ident">
-                </div>
-                <div class="mb-3">
-                    <label for="CreatedAt" class="form-label">createdAt:</label>
-                    <input th:field="*{createdAt}" type="date" class="form-control" id="CreatedAt">
-                </div>
-                <div class="mb-3">
-                    <label for="UpdatedAt" class="form-label">updatedAt:</label>
-                    <input th:field="*{updatedAt}" type="date" class="form-control" id="UpdatedAt">
+                    <input th:field="*{enterprise}" type="number" class="form-control" id="enterprise">
                 </div>
                 <button type="submit" class="w-40 btn btn-primary">Guardar</button>
-
             </div>
+            
+               
+
+            
         </form>
     </main>
 
