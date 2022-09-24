@@ -1,44 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+</html>
+
 <head>
   <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
 
-    <link rel="stylesheet" type="text/css" th:href="@{/template.css}" />
-    <script src="https://kit.fontawesome.com/f077be3e7d.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" th:href="@{/template.css}" />
+  <script src="https://kit.fontawesome.com/f077be3e7d.js" crossorigin="anonymous"></script>
 
-    <title>Agregar transaccion</title>
+  <title>Agregar transaccion</title>
 </head>
+
 <body>
-    <h1> Agregar una transacción (ingreso (+) o egreso (-) )</h1>
- 
-        <main class="vh-100 d-flex justify-content-center align-items-center">
-          <form class="d-flex justify-content-center mb-3"
-                action="#" th:action="@{/add}" th:object="${tbtransaction}" method="post">
-            <div class="w-30">
-              <div class="mb-3">
-                <div class="mb-3">
-                    <label for="id" class="form-label">Numero de transaccion:</label>
-                    <input type="text" class="form-control" id="id" th:field="*{id}">
-                  </div>
-                <label for="mount" class="form-label">Monto:</label>
-                <input type="text" class="form-control" id="mount" th:field="*{amount}">
-              </div>
-              <div class="mb-3">
-                <label for="concept" class="form-label">Concpeto del ingero o engreo:</label>
-                <input type="text" class="form-control" id="concept" placeholder="Escriba el concepto" th:field="*{concept}">
-              </div>
-            <button type="submit" class="w-40 btn btn-primary">Guardar</button>
-            <button type="button" class="w-40 btn btn-primary"><a th:href="@{/movimientos}">Regresar</a></button>
-            </div>
-          </form>
-        </main>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-        crossorigin="anonymous"></script>
-      </body>
+  <main>
+    <div class="index">
+      [ Agregar transacción Ingreso (+) | Egreso (-) ]
+      <form class="d-flex justify-content-center mb-3" action="#" th:action="@{/add}" th:object="${tbtransaction}"
+        method="post">
+        <div class="w-30">
+
+          <div class="mb-3">
+            <label for="mount" class="labelform">Numero de transaccion:</label>
+            <input type="text" class="form-control" id="id" th:field="*{id}">
+          </div>
+          <div class="mb-3">
+            <label for="mount" class="labelform">monto:</label>
+            <input type="text" class="form-control" id="mount" th:field="*{amount}">
+          </div>
+          <div class="mb-3">
+            <label for="mount" class="labelform">concepto:</label>
+            <input type="text" class="form-control" id="concept" placeholder="Escriba el concepto"
+              th:field="*{concept}">
+          </div>
+          <button type="submit" class="bttn">Guardar</button>
+          <button type="button" class="bttn"><a th:href="@{/movimientos}">Regresar</a></button>
+        </div>
+      </form>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

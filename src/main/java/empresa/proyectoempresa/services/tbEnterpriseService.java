@@ -25,7 +25,7 @@ import empresa.proyectoempresa.repositories.tbEnterpriseRepository;
     }
 
 
-    public tbEnterprise agregarEmpresa(@RequestBody tbEnterprise enterprise){
+    public tbEnterprise agregarEmpresa(tbEnterprise enterprise){
         enterprise.setCreated(LocalDate.now());
         enterprise.setUpdated(LocalDate.now());
         return repository.save(enterprise);

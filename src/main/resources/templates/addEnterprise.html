@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" type="text/css" th:href="@{/template.css}" />
+    <script src="https://kit.fontawesome.com/f077be3e7d.js" crossorigin="anonymous"></script>
+
+    <title>Agregar empresa</title>
+</head>
+
+<body>
+    <main>
+        <div class="index">
+            [ Crear empresa ]
+            <form class="d-flex justify-content-center mb-3" action="#" th:action="@{empresas/add}" th:object="${tbEnterprise}"
+                method="post">
+                <div class="w-30">
+
+                    <div class="mb-3">
+                        <label for="id" class="labelform">id:</label>
+                        <input type="text" class="form-control" id="id" th:field="*{id}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="name" class="labelform">nombre:</label>
+                        <input type="text" class="form-control" id="name" th:field="*{name}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="labelform">direccion:</label>
+                        <input type="text" class="form-control" id="address" th:field="*{address}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="document" class="labelform">documento:</label>
+                        <input type="text" class="form-control" id="document" th:field="*{document}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="document" class="labelform">documento:</label>
+                        <input type="text" class="form-control" id="document" th:field="*{document}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="labelform">telefono:</label>
+                        <input type="text" class="form-control" id="phone" th:field="*{phone}">
+                    </div>
+                    <button type="submit" class="bttn">Guardar</button>
+                    <button type="button" class="bttn"><a th:href="@{/empresas}">Regresar</a></button>
+                </div>
+            </form>
+        </div>
+    </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+
+    <div class="credit"><a href="https://github.com/codexuda" target="_blank"><i class="fa-solid fa-code"></i></a>
+    </div>
+</body>
+
+</html>
