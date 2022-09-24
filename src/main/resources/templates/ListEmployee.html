@@ -3,28 +3,53 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <title>Title</title>
+
+
+    <link rel="stylesheet" type="text/css" th:href="@{/template.css}" />
+    <script src="https://kit.fontawesome.com/f077be3e7d.js" crossorigin="anonymous"></script>
+
+    <title>.::CodeX::.</title>
 </head>
 
 <body>
 
-    <!--Código de bootstrap para crear la tabla-->
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="id">#</th>
-                <th scope="email">Email</th>
-                <th scope="profile">Perfil</th>
-                <th scope="rol">Rol</th>
-                <th scope="enterprise">Empresa</th>
-                <th scope="created">Creada</th>
-                <th scope="updated">Actualizado</th>
+    <div class="sidebar">
+        <div class="logo"><img th:src="@{/logo.jpg}" /></div>
+        <div class="navigation">
+            <a href="/">index</a>
+            <a href="/empresas">enterprises</a>
+            <a href="/usuarios">users</a>
+            <a href="/movimientos">transactions</a>
+        </div>
+    </div>
+    <div class="tophead">
+        <h1> Consulta de empleados </h1>
+        <div class="thbuttons">
+            <button type="button" class="bttn"><a th:href="@{usuarios/add}"><i class="fa-solid fa-plus"></i> agregar
+                    usuario</a></button>
+            <button type="button" class="bttn"><a th:href="@{/}"><i class="fa-solid fa-home"></i> home</a></button>
+        </div>
+    </div>
+    </div>
+    <div class="content">
+
+        <table class="table table-bordered" style="text-align: center; ">
+            <tr style="text-transform: uppercase; background-color: black; color: white; font-size: 7px;">
+                <th>#</th>
+                <th>Email</th>
+                <th>Perfil</th>
+                <th>rol</th>
+                <th>Empresa</th>
+                <th>Creada</th>
+                <th>Actualizada</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
 
             </tr>
-        </thead>
-        <tbody>
+
             <tr th:each="employee : ${listEmployee}">
                 <th scope="row" th:text="${employee.id}"></th>
                 <td th:text="${employee.email}"></td>
@@ -33,14 +58,25 @@
                 <td th:text="${employee.enterprise.name}"></td>
                 <td th:text="${employee.created}"></td>
                 <td th:text="${employee.updated}"></td>
+                <td><button type="button" class="bttn"><a th:href="@{/update/{id}(id=${employee.id})}"><i
+                                class="fa-solid fa-pen"></i></a></button></td>
+                <td><button type="button" class="bttn"><a th:href="@{/delete/{id}(id=${employee.id})}"><i
+                                class="fa-solid fa-trash"></i></a></button></td>
             </tr>
-        </tbody>
-    </table>
+        </table>
+        <!--********* Aqui va todo el contenido del div que tiene la parte de las tablas para cada una de las paginas **********
+    -->
+    </div>
 
-    <!-- este es el link de bootstrap -->
+
+    <div class="credit"><a href="https://github.com/codexuda" target="_blank"><i class="fa-solid fa-code"></i></a>
+    </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>

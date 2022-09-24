@@ -17,10 +17,14 @@
 </head>
 
 <body>
-  <main>
-    <div class="index">
-      [ Agregar transacción Ingreso (+) | Egreso (-) ]
-      <form class="d-flex justify-content-center mb-3" action="#" th:action="@{/add}" th:object="${tbtransaction}"
+  <div class="tophead" style="position: fixed;">
+    [ Crear transaccion ]
+    </div>
+<main>
+    
+    <div class="index" style="position: fixed; overflow-y: scroll;">
+      
+      <form class="d-flex justify-content-center mb-3" action="#" th:action="@{/movimientos/add}" th:object="${tbtransaction}"
         method="post">
         <div class="w-30">
 

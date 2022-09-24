@@ -17,17 +17,16 @@
 </head>
 
 <body>
+    <div class="tophead" style="position: fixed;">
+        [ Crear empresa ]
+        </div>
     <main>
-        <div class="index">
-            [ Crear empresa ]
-            <form class="d-flex justify-content-center mb-3" action="#" th:action="@{empresas/add}" th:object="${tbEnterprise}"
+        
+        <div class="index" style="position: fixed; overflow-y: scroll;">
+            
+            <form class="d-flex justify-content-center mb-3" action="#" th:action="@{/empresas/add}" th:object="${tbEnterprise}"
                 method="post">
                 <div class="w-30">
-
-                    <div class="mb-3">
-                        <label for="id" class="labelform">id:</label>
-                        <input type="text" class="form-control" id="id" th:field="*{id}">
-                    </div>
 
                     <div class="mb-3">
                         <label for="name" class="labelform">nombre:</label>
@@ -36,10 +35,6 @@
                     <div class="mb-3">
                         <label for="address" class="labelform">direccion:</label>
                         <input type="text" class="form-control" id="address" th:field="*{address}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="document" class="labelform">documento:</label>
-                        <input type="text" class="form-control" id="document" th:field="*{document}">
                     </div>
                     <div class="mb-3">
                         <label for="document" class="labelform">documento:</label>

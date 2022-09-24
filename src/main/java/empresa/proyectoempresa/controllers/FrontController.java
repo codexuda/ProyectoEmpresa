@@ -81,21 +81,6 @@ public class FrontController {
         return "redirect:/empleados";
     }
     //fin bloque agregar empleado//
-/*
-    @Autowired
-    tbEmployeeController employeeService;
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String add(@ModelAttribute tbEmployee employee, Model model){
-        model.addAttribute("employee", new tbEmployee());
-        return "addEmployee";
-
-    }
-
-   
-
-
-    */
-        
 
     
 
@@ -108,6 +93,22 @@ public class FrontController {
         List<tbEnterprise> ViewListEnterprises = this.enterpriseService.listarEmpresas();
         model.addAttribute("ViewListEnterprises", ViewListEnterprises);
         return "ListEnterprise";
+
+    }
+
+    @RequestMapping(value = "/empresas/add", method = RequestMethod.GET)
+    public String add(@ModelAttribute tbEnterprise tbEnterprise, Model model){
+        System.out.println(tbEnterprise);
+        model.addAttribute("tbEnterprise", new tbEnterprise());
+        return "AddEnterprise";
+    }
+
+
+    @RequestMapping(value = "/empresas/add", method = RequestMethod.POST)
+    public String addEnterprise(@ModelAttribute tbEnterprise tbEnterprise, Model model){
+        System.out.println(tbEnterprise);
+        this.enterpriseService.agregarEmpresa(tbEnterprise);
+        return "redirect:/empresas";
 
     }
 }
