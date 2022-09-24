@@ -5,15 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import empresa.proyectoempresa.modelo.*;
-
 import empresa.proyectoempresa.services.*;
-import empresa.proyectoempresa.controllers.tbEmployeeController;
+
 
 @Controller
 @RequestMapping("/")
@@ -46,38 +43,6 @@ public class FrontController {
     }
 
 
-
-    // Bloque para listar empleado
-    /*
-    @Autowired
-    tbEmployeeService employeeService;
-
-    // metodo para listar empleados en el front end, llamando el metodo desde el
-    // controlador
-    @RequestMapping(value = "/empleados", method = RequestMethod.GET)
-    public String listEmployee(Model model) {
-        List<tbEmployee> listEmployee = this.tbEmployeeService.getAllEmployees();
-        model.addAttribute("listEmployee", listEmployee);
-        return "ListEmployee";
-    }
-    // fin bloque listar empleado
-
-    //Bloque para agregar empleado
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String add(@ModelAttribute tbEmployee employee, Model model){
-        model.addAttribute("employee", new tbEmployee());
-        return "addEmployee";
-
-    }
-
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addEmployee(@ModelAttribute tbEmployee employee, Model model){
-        this.tbEmployeeController.agregar(employee);
-        return "redirect:/empleados";
-    }
-    //fin bloque agregar empleado//
-
-
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addTransaction(@ModelAttribute tbTransaction tbtransaction, Model model){
         System.out.println(tbtransaction);
@@ -85,6 +50,50 @@ public class FrontController {
         return "redirect:/movimientos";
 
     }
+
+    // Bloque para listar empleado
+    
+    @Autowired
+    tbEmployeeService employeeService;
+
+    // metodo para listar empleados en el front end, llamando el metodo desde el
+    // controlador
+    @RequestMapping(value = "/usuarios", method = RequestMethod.GET)
+    public String listEmployee(Model model) {
+        List<tbEmployee> listEmployee = this.employeeService.getAllEmployees();
+        model.addAttribute("listEmployee", listEmployee);
+        return "ListEmployee";
+    }
+    // fin bloque listar empleado
+
+    //Bloque para agregar empleado
+
+        @RequestMapping(value = "/usiarios/add", method = RequestMethod.GET)
+        public String add(@ModelAttribute tbEmployee tbemployee, Model model){
+        System.out.println(tbemployee);
+        model.addAttribute("tbemployee", new tbEmployee());
+        return "AddEmployee";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String addEmployee(@ModelAttribute tbEmployee employee, Model model){
+        this.employeeService.agregarUsuario(employee);
+        return "redirect:/empleados";
+    }
+    //fin bloque agregar empleado//
+/*
+    @Autowired
+    tbEmployeeController employeeService;
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String add(@ModelAttribute tbEmployee employee, Model model){
+        model.addAttribute("employee", new tbEmployee());
+        return "addEmployee";
+
+    }
+
+   
+
+
     */
         
 
