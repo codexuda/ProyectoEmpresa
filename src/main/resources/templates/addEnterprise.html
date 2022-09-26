@@ -19,30 +19,30 @@
 <body>
     <div class="tophead" style="position: fixed;">
         [ Crear empresa ]
-        </div>
+    </div>
     <main>
-        
-        <div class="index" style="position: fixed; overflow-y: scroll;">
-            
-            <form class="d-flex justify-content-center mb-3" action="#" th:action="@{/empresas/add}" th:object="${tbEnterprise}"
-                method="post">
-                <div class="w-30">
 
+        <div class="index" style="position: fixed; overflow-y: scroll;">
+
+            <form class="d-flex justify-content-center mb-3" action="#" th:action="@{/empresas/add}"
+                th:object="${tbEnterprise}" method="post">
+                <div class="w-30">
+                    <label class="labelform"><b>informacion de la empresa</b></label>
                     <div class="mb-3">
                         <label for="name" class="labelform">nombre:</label>
-                        <input type="text" class="form-control" id="name" th:field="*{name}">
+                        <input type="text" class="inputform" id="name" th:field="*{name}">
                     </div>
                     <div class="mb-3">
                         <label for="address" class="labelform">direccion:</label>
-                        <input type="text" class="form-control" id="address" th:field="*{address}">
+                        <input type="text" class="inputform" id="address" th:field="*{address}">
                     </div>
                     <div class="mb-3">
                         <label for="document" class="labelform">documento:</label>
-                        <input type="text" class="form-control" id="document" th:field="*{document}">
+                        <input type="text" class="inputform" id="document" th:field="*{document}">
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="labelform">telefono:</label>
-                        <input type="text" class="form-control" id="phone" th:field="*{phone}">
+                        <input type="text" class="inputform" id="phone" th:field="*{phone}">
                     </div>
                     <button type="submit" class="bttn">Guardar</button>
                     <button type="button" class="bttn"><a th:href="@{/empresas}">Regresar</a></button>
@@ -60,6 +60,9 @@
         crossorigin="anonymous"></script>
 
     <div class="credit"><a href="https://github.com/codexuda" target="_blank"><i class="fa-solid fa-code"></i></a>
+    </div>
+
+    <div class="home"><a th:href="@{/}"><i class="fa-solid fa-home"></i></a>
     </div>
 </body>
 

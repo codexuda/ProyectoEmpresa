@@ -59,6 +59,8 @@ public class FrontController {
 
     @Autowired
     tbEmployeeService employeeService;
+    @Autowired
+    tbProfileService profileService;
 
     // metodo para listar empleados en el front end, llamando el metodo desde el
     // controlador
@@ -73,16 +75,18 @@ public class FrontController {
     // Bloque para agregar empleado
 
     @RequestMapping(value = "/usuarios/add", method = RequestMethod.GET)
-    public String add(@ModelAttribute tbEmployee tbemployee, @ModelAttribute tbEnterprise enterprise, Model model) {
+    public String add(@ModelAttribute tbProfile profile ,@ModelAttribute tbEmployee tbemployee, Model model) {
         System.out.println(tbemployee);
+        model.addAttribute("profile", new tbProfile());
         model.addAttribute("listaEmpresas", enterpriseService.listarEmpresas());
         model.addAttribute("tbemployee", new tbEmployee());
-        return "AddEmployee";
+        return "addEmployee";
     }
 
     @RequestMapping(value = "/usuarios/add", method = RequestMethod.POST)
-    public String addEmployee(@ModelAttribute tbEmployee employee, Model model) {
-        this.employeeService.agregarUsuario(employee);
+    public String addEmployee(@ModelAttribute tbProfile tbprofile, @ModelAttribute tbEmployee tbemployee, Model model) {
+        this.profileService.agregarPerfil(tbprofile);
+        this.employeeService.agregarUsuario(tbemployee);
         return "redirect:/empleados";
     }
     // fin bloque agregar empleado//
