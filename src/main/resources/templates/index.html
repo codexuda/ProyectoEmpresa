@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 
@@ -22,12 +23,19 @@
 
             <div class="hlogo"><img th:src="@{/logo.jpg}"></div>
             <br> Bienvenido
-            <div class="bttn" style="margin-top: 5px; padding: 5px"><a th:href="@{/empresas}"><i
-                        class="fa-solid fa-building"></i> &nbsp; &nbsp; Consultar empresas</a></div>
-            <div class="bttn" style="margin-top: 5px; padding: 5px"><a th:href="@{/usuarios}"><i
-                        class="fa-solid fa-users"></i> &nbsp; &nbsp; Consultar empleados</a></div>
-            <div class="bttn" style="margin-top: 5px; padding: 5px;"><a th:href="@{/movimientos}"><i
-                        class="fa-solid fa-dollar-sign"></i> &nbsp; &nbsp; Consultar transacciones</a></div>
+            <div sec:authorize="!isAuthenticated()">
+                <div class="bttn" style="margin-top: 5px; padding: 5px"><a th:href="@{/oauth2/authorization/auth0}"><i
+                            class="fa-solid fa-building"></i> &nbsp; &nbsp; .::LOGIN::.</a></div>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <div class="bttn" style="margin-top: 5px; padding: 5px"><a th:href="@{/empresas}"><i
+                            class="fa-solid fa-building"></i> &nbsp; &nbsp; Consultar empresas</a></div>
+                <div class="bttn" style="margin-top: 5px; padding: 5px"><a th:href="@{/usuarios}"><i
+                            class="fa-solid fa-users"></i> &nbsp; &nbsp; Consultar empleados</a></div>
+                <div class="bttn" style="margin-top: 5px; padding: 5px;"><a th:href="@{/movimientos}"><i
+                            class="fa-solid fa-dollar-sign"></i> &nbsp; &nbsp; Consultar transacciones</a></div>
+            </div>
+
 
 
 
