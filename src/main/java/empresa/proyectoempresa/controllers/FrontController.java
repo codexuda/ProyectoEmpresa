@@ -3,6 +3,8 @@ package empresa.proyectoempresa.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,14 +14,14 @@ import empresa.proyectoempresa.modelo.*;
 import empresa.proyectoempresa.services.*;
 
 @Controller
-@RequestMapping("/")
 public class FrontController {
 
     // Index
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index() {
+      @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index(Model model, @AuthenticationPrincipal OidcUser principal) {
         return "index";
     }
+
 
     // Controlador View Transacciones
 
@@ -32,7 +34,7 @@ public class FrontController {
         model.addAttribute("ViewlistTransaccion", ViewlistTransaccion);
         return "ListTransactions";
     }
-
+    // Controller para agregar transacción.
     @RequestMapping(value = "/movimientos/add", method = RequestMethod.GET)
     public String add(@ModelAttribute tbTransaction tbtransaction, @ModelAttribute tbEmployee tbemployee,
     @ModelAttribute tbEnterprise enterprise, Model model) {
