@@ -19,11 +19,11 @@
 <body>
     <div class="tophead" style="position: fixed;">
         [ Crear empleado ]
-        </div>
+    </div>
     <main>
-        
+
         <div class="index" style="position: fixed; overflow-y: scroll;">
-            
+
             <form class="d-flex justify-content-center mb-3" th:action="@{/usuarios/add}" method="post"
                 th:object="${tbemployee}">
                 <div class="w-30">
@@ -42,8 +42,10 @@
                         <input th:field="*{rol}" type="text" class="form-control" id="Rol">
                     </div>
                     <div class="mb-3">
-                        <label for="Ident" class="labelform">ident:</label>
-                        <input th:field="*{enterprise}" type="number" class="form-control" id="enterprise">
+                        <label for="Ident" class="labelform">empresa:</label>
+                        <select th:field="*{enterprise}" class="form-control" name="enterprise" id="enterprise">
+                            <option th:each="empresa: ${listaEmpresas}" th:text="${empresa.name}" th:value="empresa.name"></option>
+                        </select>
                     </div>
                     <button type="submit" class="bttn">Guardar</button>
                     <button type="button" class="bttn"><a th:href="@{/usuarios}">Regresar</a></button>

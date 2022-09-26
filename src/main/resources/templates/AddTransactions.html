@@ -41,6 +41,18 @@
             <input type="text" class="form-control" id="concept" placeholder="Escriba el concepto"
               th:field="*{concept}">
           </div>
+        <div class="mb-3">
+          <label for="employee" class="labelform">empresa:</label>
+          <select th:field="*{employee}" class="form-control" name="employee" id="employee">
+              <option th:each="employee: ${listaEmpleados}" th:text="${employee.email}" th:value="employee.email"></option>
+          </select>
+      </div>
+        <div class="mb-3">
+          <label for="Ident" class="labelform">empresa:</label>
+          <select th:field="*{enterprise}" class="form-control" name="enterprise" id="enterprise">
+              <option th:each="empresa: ${listaEmpresas}" th:text="${empresa.name}" th:value="empresa.name"></option>
+          </select>
+      </div>
           <button type="submit" class="bttn">Guardar</button>
           <button type="button" class="bttn"><a th:href="@{/movimientos}">Regresar</a></button>
         </div>

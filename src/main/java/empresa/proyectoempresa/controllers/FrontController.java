@@ -11,17 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import empresa.proyectoempresa.modelo.*;
 import empresa.proyectoempresa.services.*;
 
-
 @Controller
 @RequestMapping("/")
 public class FrontController {
 
-    //Index
+    // Index
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
         return "index";
     }
-
 
     // Controlador View Transacciones
 
@@ -36,23 +34,29 @@ public class FrontController {
     }
 
     @RequestMapping(value = "/movimientos/add", method = RequestMethod.GET)
-    public String add(@ModelAttribute tbTransaction tbtransaction, Model model){
+    public String add(@ModelAttribute tbTransaction tbtransaction, @ModelAttribute tbEmployee tbemployee,
+    @ModelAttribute tbEnterprise enterprise, Model model) {
         System.out.println(tbtransaction);
+        
+        
+        model.addAttribute("listaEmpleados", employeeService.getAllEmployees());
+        model.addAttribute("listaEmpresas", enterpriseService.listarEmpresas());
         model.addAttribute("tbtransaction", new tbTransaction());
         return "AddTransactions";
     }
 
-
     @RequestMapping(value = "/movimientos/add", method = RequestMethod.POST)
-    public String addTransaction(@ModelAttribute tbTransaction tbtransaction, Model model){
+    public String addTransaction(@ModelAttribute tbTransaction tbtransaction, Model model) {
         System.out.println(tbtransaction);
+
+
         this.tbtransactionService.createTransaction(tbtransaction);
         return "redirect:/movimientos";
 
     }
 
     // Bloque para listar empleado
-    
+
     @Autowired
     tbEmployeeService employeeService;
 
@@ -66,23 +70,22 @@ public class FrontController {
     }
     // fin bloque listar empleado
 
-    //Bloque para agregar empleado
+    // Bloque para agregar empleado
 
-        @RequestMapping(value = "/usuarios/add", method = RequestMethod.GET)
-        public String add(@ModelAttribute tbEmployee tbemployee, Model model){
+    @RequestMapping(value = "/usuarios/add", method = RequestMethod.GET)
+    public String add(@ModelAttribute tbEmployee tbemployee, @ModelAttribute tbEnterprise enterprise, Model model) {
         System.out.println(tbemployee);
+        model.addAttribute("listaEmpresas", enterpriseService.listarEmpresas());
         model.addAttribute("tbemployee", new tbEmployee());
         return "AddEmployee";
     }
 
     @RequestMapping(value = "/usuarios/add", method = RequestMethod.POST)
-    public String addEmployee(@ModelAttribute tbEmployee employee, Model model){
+    public String addEmployee(@ModelAttribute tbEmployee employee, Model model) {
         this.employeeService.agregarUsuario(employee);
         return "redirect:/empleados";
     }
-    //fin bloque agregar empleado//
-
-    
+    // fin bloque agregar empleado//
 
     // Controlador Vista Empresa
     @Autowired
@@ -97,15 +100,14 @@ public class FrontController {
     }
 
     @RequestMapping(value = "/empresas/add", method = RequestMethod.GET)
-    public String add(@ModelAttribute tbEnterprise tbEnterprise, Model model){
+    public String add(@ModelAttribute tbEnterprise tbEnterprise, Model model) {
         System.out.println(tbEnterprise);
         model.addAttribute("tbEnterprise", new tbEnterprise());
         return "AddEnterprise";
     }
 
-
     @RequestMapping(value = "/empresas/add", method = RequestMethod.POST)
-    public String addEnterprise(@ModelAttribute tbEnterprise tbEnterprise, Model model){
+    public String addEnterprise(@ModelAttribute tbEnterprise tbEnterprise, Model model) {
         System.out.println(tbEnterprise);
         this.enterpriseService.agregarEmpresa(tbEnterprise);
         return "redirect:/empresas";
