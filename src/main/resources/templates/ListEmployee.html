@@ -28,7 +28,7 @@
     <div class="tophead">
         <h1> Consulta de empleados </h1>
         <div class="thbuttons">
-            <button type="button" class="bttn"><a th:href="@{usuarios/add}"><i class="fa-solid fa-plus"></i> agregar
+            <button type="button" class="bttn"><a th:href="@{usuarios/new}"><i class="fa-solid fa-plus"></i> agregar
                     usuario</a></button>
             <button type="button" class="bttn"><a th:href="@{/}"><i class="fa-solid fa-home"></i> home</a></button>
         </div>
@@ -45,8 +45,6 @@
                 <th>Empresa</th>
                 <th>Creada</th>
                 <th>Actualizada</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
 
             </tr>
 
@@ -58,10 +56,6 @@
                 <td th:text="${employee.enterprise.name}"></td>
                 <td th:text="${employee.created}"></td>
                 <td th:text="${employee.updated}"></td>
-                <td><button type="button" class="bttn"><a th:href="@{/update/{id}(id=${employee.id})}"><i
-                                class="fa-solid fa-pen"></i></a></button></td>
-                <td><button type="button" class="bttn"><a th:href="@{/delete/{id}(id=${employee.id})}"><i
-                                class="fa-solid fa-trash"></i></a></button></td>
             </tr>
         </table>
         <!--********* Aqui va todo el contenido del div que tiene la parte de las tablas para cada una de las paginas **********

@@ -41,14 +41,14 @@
           <div class="mb-3">
             <label for="employee" class="labelform">usuario:</label>
             <select th:field="*{employee}" class="inputform" name="employee" id="employee">
-              <option th:each="employee: ${listaEmpleados}" th:text="${employee.email}" th:value="employee.email">
+              <option th:each="employee: ${listaEmpleados}" th:text="${employee.email}" th:value="${employee.id}">
               </option>
             </select>
           </div>
           <div class="mb-3">
             <label for="Ident" class="labelform">empresa:</label>
             <select th:field="*{enterprise}" class="inputform" name="enterprise" id="enterprise">
-              <option th:each="empresa: ${listaEmpresas}" th:text="${empresa.name}" th:value="empresa.name"></option>
+              <option th:each="empresa: ${listaEmpresas}" th:text="${empresa.name}" th:value="${empresa.id}"></option>
             </select>
           </div>
           <button type="submit" class="bttn">Guardar</button>

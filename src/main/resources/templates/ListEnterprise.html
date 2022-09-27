@@ -45,8 +45,6 @@
                 <th>Telefono</th>
                 <th>Creada</th>
                 <th>actualizada</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
 
             </tr>
 
@@ -58,10 +56,6 @@
                 <td th:text="${enterprise.phone}"></td>
                 <td th:text="${enterprise.created}"></td>
                 <td th:text="${enterprise.updated}"></td>
-                <td><button type="button" class="bttn"><a th:href="@{/update/{ident}(ident=${enterprise.id})}"><i
-                                class="fa-solid fa-pen"></i></a></button></td>
-                <td><button type="button" class="bttn"><a th:href="@{/delete/{ident}(ident=${enterprise.id})}"><i
-                                class="fa-solid fa-trash"></i></a></button></td>
 
             </tr>
 

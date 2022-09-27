@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/template.css}" />
     <script src="https://kit.fontawesome.com/f077be3e7d.js" crossorigin="anonymous"></script>
 
-    <title>Agregar transaccion</title>
+    <title>Agregar empleado</title>
 </head>
 
 <body>
@@ -23,25 +23,10 @@
     <main>
 
         <div class="index" style="position: fixed; overflow-y: scroll;">
-            <form class="d-flex justify-content-center mb-3" th:action="@{/usuarios/add}" method="post"
-                th:object="${profile}">
-
-                <div class="w-30">
-                    <label class="labelform"><b>informacion del perfil</b></label>
-                    <div class="mb-3">
-                        <label for="phone" class="labelform">telefono:</label>
-                        <input th:field="*{phone}" type="text" class="inputform" id="phone">
-                    </div>
-                    <div class="mb-3">
-                        <label for="image" class="labelform">imagen:</label>
-                        <input th:field="*{image}" type="text" class="inputform" id="image">
-                    </div>
-                </div>
-            </form>
+            
 
             <form class="d-flex justify-content-center mb-3" th:action="@{/usuarios/add}" method="post"
                 th:object="${tbemployee}">
-
                 <div class="w-30">
                     <label class="labelform"><b>informacion del usuario</b></label>
                     <div class="mb-3">
@@ -59,7 +44,14 @@
                         <label for="enterprise" class="labelform">empresa:</label>
                         <select th:field="*{enterprise}" class="inputform" name="enterprise" id="enterprise">
                             <option th:each="empresa: ${listaEmpresas}" th:text="${empresa.name}"
-                                th:value="empresa.name"></option>
+                                th:value="${empresa.id}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="profile" class="labelform">perfil:</label>
+                        <select th:field="*{profile}" class="inputform" name="profile" id="profile">
+                            <option th:each="perfil: ${listaPerfiles}" th:text="${perfil.id}+'-'+${perfil.image}"
+                                th:value="${perfil.id}"></option>
                         </select>
                     </div>
                     <button type="submit" class="bttn">Guardar</button>

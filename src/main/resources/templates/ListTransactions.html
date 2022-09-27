@@ -39,12 +39,12 @@
         <table class="table table-bordered" style="text-align: center; ">
             <tr style="text-transform: uppercase; background-color: black; color: white; font-size: 7px;" >
             <th>#</th>
-            <th>Fecha Creación</th>
             <th>Monto</th>
             <th>Concepto</th>
-            <th>Fecha de Actualizacón</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
+            <th>empresa</th>
+            <th>empleado</th>
+            <th>creada</th>
+            <th>actualizada</th>
     
         </tr>
     
@@ -52,13 +52,12 @@
         <!--En nuestro controller, creamos en viewtransaccion un modelo con un atributo llamado emplist donde esta guardada la lista de todas las transaccions-->
         <tr th:each="transaccion : ${ViewlistTransaccion}">
             <th scope= "row" th:text="${transaccion.id}"></th>
-            <td th:text="${transaccion.created}"></td>
             <td th:text="${transaccion.amount}"></td>
             <td th:text="${transaccion.concept}"></td>
+            <td th:text="${transaccion.enterprise.name}"></td>
+            <td th:text="${transaccion.employee.email}"></td>
+            <td th:text="${transaccion.created}"></td>
             <td th:text="${transaccion.updated}"></td>
-            <td><button type="button" class="bttn"><a th:href="@{/update/{idtran}(idtran=${transaccion.id})}"><i class="fa-solid fa-pen"></i></a></button></td>
-            <td><button type="button" class="bttn"><a th:href="@{/update/{idtran}(idtran=${transaccion.id})}"><i class="fa-solid fa-trash"></i></a></button></td>
-    
         </tr>
     </table>
         <!--********* Aqui va todo el contenido del div que tiene la parte de las tablas para cada una de las paginas **********

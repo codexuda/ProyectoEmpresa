@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+
 import empresa.proyectoempresa.modelo.*;
 import empresa.proyectoempresa.services.*;
 
@@ -36,8 +38,7 @@ public class FrontController {
     }
     // Controller para agregar transacción.
     @RequestMapping(value = "/movimientos/add", method = RequestMethod.GET)
-    public String add(@ModelAttribute tbTransaction tbtransaction, @ModelAttribute tbEmployee tbemployee,
-    @ModelAttribute tbEnterprise enterprise, Model model) {
+    public String add(@ModelAttribute tbTransaction tbtransaction, Model model) {
         System.out.println(tbtransaction);
         
         
@@ -49,9 +50,6 @@ public class FrontController {
 
     @RequestMapping(value = "/movimientos/add", method = RequestMethod.POST)
     public String addTransaction(@ModelAttribute tbTransaction tbtransaction, Model model) {
-        System.out.println(tbtransaction);
-
-
         this.tbtransactionService.createTransaction(tbtransaction);
         return "redirect:/movimientos";
 
@@ -63,6 +61,21 @@ public class FrontController {
     tbEmployeeService employeeService;
     @Autowired
     tbProfileService profileService;
+
+
+    //crear perfil para empleado
+    @RequestMapping(value = "/usuarios/new", method = RequestMethod.GET)
+    public String add(@ModelAttribute tbProfile profile, Model model){
+        model.addAttribute("profile", new tbProfile());
+        return "AddProfile";
+    }
+
+    @RequestMapping(value = "/usuarios/new", method = RequestMethod.POST)
+    public String addProfile(@ModelAttribute tbProfile profile, Model model){
+        System.out.println(profile);
+        this.profileService.agregarPerfil(profile);
+        return "redirect:/usuarios/add";
+    }
 
     // metodo para listar empleados en el front end, llamando el metodo desde el
     // controlador
@@ -79,17 +92,16 @@ public class FrontController {
     @RequestMapping(value = "/usuarios/add", method = RequestMethod.GET)
     public String add(@ModelAttribute tbProfile profile ,@ModelAttribute tbEmployee tbemployee, Model model) {
         System.out.println(tbemployee);
-        model.addAttribute("profile", new tbProfile());
+        model.addAttribute("listaPerfiles", profileService.listarPerfiles());
         model.addAttribute("listaEmpresas", enterpriseService.listarEmpresas());
         model.addAttribute("tbemployee", new tbEmployee());
-        return "addEmployee";
+        return "AddEmployee";
     }
 
     @RequestMapping(value = "/usuarios/add", method = RequestMethod.POST)
-    public String addEmployee(@ModelAttribute tbProfile tbprofile, @ModelAttribute tbEmployee tbemployee, Model model) {
-        this.profileService.agregarPerfil(tbprofile);
+    public String addEmployee(@ModelAttribute tbEmployee tbemployee, Model model) {
         this.employeeService.agregarUsuario(tbemployee);
-        return "redirect:/empleados";
+        return "redirect:/usuarios";
     }
     // fin bloque agregar empleado//
 
@@ -114,7 +126,6 @@ public class FrontController {
 
     @RequestMapping(value = "/empresas/add", method = RequestMethod.POST)
     public String addEnterprise(@ModelAttribute tbEnterprise tbEnterprise, Model model) {
-        System.out.println(tbEnterprise);
         this.enterpriseService.agregarEmpresa(tbEnterprise);
         return "redirect:/empresas";
 
