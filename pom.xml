@@ -95,7 +95,7 @@
 					<execution>
 						<goals>
 							<goal>build-info</goal>
-							</goals>
+						</goals>
 							<configuration>
 							<additionalProperties>
 								<encoding.source>${project.build.sourceEncoding}</encoding.source>
